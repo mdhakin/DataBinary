@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCRRS_LIST", "MCRRS_LIST\MC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLoggerParams", "DataLoggerParams\DataLoggerParams.csproj", "{46B20A76-201C-4841-B412-98E90C5B932F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageGroup", "MessageGroup\MessageGroup.csproj", "{E086AC85-D1FC-4357-8A0F-C4AF30EE21D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{46B20A76-201C-4841-B412-98E90C5B932F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46B20A76-201C-4841-B412-98E90C5B932F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46B20A76-201C-4841-B412-98E90C5B932F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E086AC85-D1FC-4357-8A0F-C4AF30EE21D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E086AC85-D1FC-4357-8A0F-C4AF30EE21D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E086AC85-D1FC-4357-8A0F-C4AF30EE21D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E086AC85-D1FC-4357-8A0F-C4AF30EE21D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -62,6 +62,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Factory.cs" />
+    <Compile Include="Messagegrp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Messagegrp.Designer.cs">
+      <DependentUpon>Messagegrp.cs</DependentUpon>
+    </Compile>
     <Compile Include="SignalsFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     <Compile Include="TestingParent.Designer.cs">
       <DependentUpon>TestingParent.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Messagegrp.resx">
+      <DependentUpon>Messagegrp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SignalsFrm.resx">
       <DependentUpon>SignalsFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +135,10 @@
     <ProjectReference Include="..\MCRRS_LIST\MCRRS_LIST.csproj">
       <Project>{46e03491-c007-4a37-baa5-444c38d0b3bc}</Project>
       <Name>MCRRS_LIST</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MessageGroup\MessageGroup.csproj">
+      <Project>{E086AC85-D1FC-4357-8A0F-C4AF30EE21D8}</Project>
+      <Name>MessageGroup</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
