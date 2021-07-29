@@ -126,6 +126,7 @@
     <EmbeddedResource Include="TestingParent.resx">
       <DependentUpon>TestingParent.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="MCRRS_SIGNALS.ini" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -135,6 +136,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="settings.ini" />
+    <None Include="vehicles.ini" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
