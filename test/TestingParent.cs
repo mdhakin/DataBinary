@@ -131,5 +131,32 @@ namespace test
         {
             LoadSignalsForm();
         }
+
+        private void TestingParent_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void messageGroupTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Messagegrp childForm = new Messagegrp();
+            childForm.MdiParent = this;
+            //childForm.Text = "Window " + childFormNumber++;
+            childForm.Show();
+        }
+
+        private void vehicleListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void makeDataFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // MakeDataFile
+            MakeDataFile childForm = new MakeDataFile();
+            childForm.MdiParent = this;
+            //childForm.Text = "Window " + childFormNumber++;
+            childForm.Show();
+        }
     }
 }

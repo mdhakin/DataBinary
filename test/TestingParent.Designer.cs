@@ -61,6 +61,8 @@ namespace test
             this.dataLoggingParametersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rawDataFileTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vehicleListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.messageGroupTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.makeDataFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,7 +105,7 @@ namespace test
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(957, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1300, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -322,7 +324,9 @@ namespace test
             this.optionsToolStripMenuItem,
             this.dataLoggingParametersToolStripMenuItem,
             this.rawDataFileTestToolStripMenuItem,
-            this.vehicleListToolStripMenuItem});
+            this.vehicleListToolStripMenuItem,
+            this.messageGroupTestToolStripMenuItem,
+            this.makeDataFileToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(46, 20);
             this.toolsMenu.Text = "&Tools";
@@ -351,6 +355,21 @@ namespace test
             this.vehicleListToolStripMenuItem.Name = "vehicleListToolStripMenuItem";
             this.vehicleListToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.vehicleListToolStripMenuItem.Text = "Vehicle List";
+            this.vehicleListToolStripMenuItem.Click += new System.EventHandler(this.vehicleListToolStripMenuItem_Click);
+            // 
+            // messageGroupTestToolStripMenuItem
+            // 
+            this.messageGroupTestToolStripMenuItem.Name = "messageGroupTestToolStripMenuItem";
+            this.messageGroupTestToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.messageGroupTestToolStripMenuItem.Text = "Message Group Test";
+            this.messageGroupTestToolStripMenuItem.Click += new System.EventHandler(this.messageGroupTestToolStripMenuItem_Click);
+            // 
+            // makeDataFileToolStripMenuItem
+            // 
+            this.makeDataFileToolStripMenuItem.Name = "makeDataFileToolStripMenuItem";
+            this.makeDataFileToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.makeDataFileToolStripMenuItem.Text = "Make Data File";
+            this.makeDataFileToolStripMenuItem.Click += new System.EventHandler(this.makeDataFileToolStripMenuItem_Click);
             // 
             // windowsMenu
             // 
@@ -466,7 +485,7 @@ namespace test
             this.helpToolStripButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(957, 25);
+            this.toolStrip.Size = new System.Drawing.Size(1300, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
@@ -541,9 +560,9 @@ namespace test
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 591);
+            this.statusStrip.Location = new System.Drawing.Point(0, 814);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(957, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1300, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -557,7 +576,7 @@ namespace test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 613);
+            this.ClientSize = new System.Drawing.Size(1300, 836);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
@@ -566,6 +585,7 @@ namespace test
             this.Name = "TestingParent";
             this.Text = "TestingParent";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.TestingParent_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.toolStrip.ResumeLayout(false);
@@ -634,6 +654,8 @@ namespace test
         private System.Windows.Forms.ToolStripMenuItem dataLoggingParametersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rawDataFileTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vehicleListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem messageGroupTestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem makeDataFileToolStripMenuItem;
     }
 }
 

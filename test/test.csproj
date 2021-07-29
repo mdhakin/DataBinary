@@ -48,8 +48,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.Compatibility" />
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,6 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Factory.cs" />
+    <Compile Include="MakeDataFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MakeDataFile.Designer.cs">
+      <DependentUpon>MakeDataFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Messagegrp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +102,9 @@
     <Compile Include="TestingParent.Designer.cs">
       <DependentUpon>TestingParent.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MakeDataFile.resx">
+      <DependentUpon>MakeDataFile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Messagegrp.resx">
       <DependentUpon>Messagegrp.cs</DependentUpon>
     </EmbeddedResource>

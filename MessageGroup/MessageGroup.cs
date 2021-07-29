@@ -8,73 +8,98 @@ namespace MessageGroup
     /// for a moment in time. The timestamp is a long value identifing the common 
     /// Timestamp for all contained messages. 
     /// </summary>
-    public class MessageGroup : IMessageGroup
+    public class MessageGroup 
     {
-        public long timestamp { get; set; }
+        public UInt32 timestamp { get => mTimeStamp;}
+        private static int messagecount = 13;
+        private UInt32 mTimeStamp = new UInt32();
 
-        private long mTimeStamp;
+        public UInt16[] MesssageID = new UInt16[messagecount];
+        public byte[] frame0 = new byte[messagecount];
+        public byte[] frame1 = new byte[messagecount];
+        public byte[] frame2 = new byte[messagecount];
+        public byte[] frame3 = new byte[messagecount];
+        public byte[] frame4 = new byte[messagecount];
+        public byte[] frame5 = new byte[messagecount];
+        public byte[] frame6 = new byte[messagecount];
+        public byte[] frame7 = new byte[messagecount];
 
-        
 
-        public message[] Messageset { get => mMessageset; }
-        private message[] mMessageset;
+        private int[] messagetaken = new int[messagecount];
 
-        public int MessageCount { get; set; }
-        
+        private bool bTimeStampSet = false;
 
-        public MessageGroup(long ts, int messagecount)
+        public int getMeassageSixe()
         {
-            this.mTimeStamp = ts;
+            return messagecount;
+        }
+        public MessageGroup()
+        {
+
+            for (int i = 0; i < messagecount; i++)
+            {
+                messagetaken[i] = 0;
+            }
             
-            this.MessageCount = messagecount;
 
-            mMessageset = new message[messagecount];
         }
-    }
 
-    public class message
-    {
-        public long TimeStamp { get; set; }
-        
-
-        public UInt16 MsgID { get; set; }
-        
-
-        public byte[] frames;
-        public message()
+        public bool setTimeStamp(UInt32 ts)
         {
-            //mTimeStamp = ts;
-            //frames = new byte[8];
-            //mMsgID = id;
-            //frames[0] = f0;
-            //frames[1] = f1;
-            //frames[2] = f2;
-            //frames[3] = f3;
-            //frames[4] = f4;
-            //frames[5] = f5;
-            //frames[6] = f6;
-            //frames[7] = f7;
-
+            if (ts > 0)
+            {
+                mTimeStamp = ts;
+                bTimeStampSet = true;
+                return true;
+            }else
+            {
+                return false;
+            }
         }
-    }
 
-    class MessageGroupCompare : IComparer
-    {
-        public int Compare(object x, object y)
+        // 1627507007
+        public int SetMessages(UInt16 id, byte f0, byte f1, byte f2, byte f3, byte f4, byte f5, byte f6, byte f7, int index)
         {
-            return (new CaseInsensitiveComparer()).Compare(((MessageGroup)x).timestamp, ((MessageGroup)y).timestamp);
+
+            if (messagetaken[index] == 0 && bTimeStampSet == true && (f0 > -1 && f0 < 256) && (f1 > -1 && f1 < 256) && (f2 > -1 && f2 < 256) && (f3 > -1 && f3 < 256) && (f4 > -1 && f4 < 256) && (f5 > -1 && f5 < 256) && (f6 > -1 && f6 < 256) && (f7 > -1 && f7 < 256))
+            {
+                messagetaken[index] = 1;
+                MesssageID[index] = id;
+                frame0[index] = f0;
+                frame1[index] = f1;
+                frame2[index] = f2;
+                frame3[index] = f3;
+                frame4[index] = f4;
+                frame5[index] = f5;
+                frame6[index] = f6;
+                frame7[index] = f7;
+
+                
+                return 0;
+            }else
+            {
+                return -1;
+            }
         }
 
-        // Example
-        /*
-        MessageGroup[] group = {
-            new MessageGroup(){ FirstName="Steve", LastName="Jobs"},
-            new MessageGroup(){ FirstName="Bill", LastName="Gates"},
-            new MessageGroup(){ FirstName="Lary", LastName="Page"}
-        };
- 
-        Array.Sort(people, new PersonComparer());
-         
-         */
+        public void releaseIndex(int index)
+        {
+            messagetaken[index] = 0;
+        }
+
+        public int[] ListTakenMessages()
+        {
+            int[] taken = new int[messagecount];
+
+            for (int i = 0; i < messagecount; i++)
+            {
+                taken[i] = messagetaken[i];
+            }
+
+
+            return taken;
+        }
     }
+
+    
 }
