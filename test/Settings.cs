@@ -15,6 +15,9 @@ namespace test
         public Settings()
         {
             settings = File.ReadAllLines("settings.ini");
+
+            
+            
             lastRawFilePath = settings[1];
 
 
@@ -25,6 +28,7 @@ namespace test
             if (Directory.Exists(sPath))
             {
                 settings[1] = sPath;
+                
                 savefile();
             }
         }

@@ -147,7 +147,11 @@ namespace test
 
         private void vehicleListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //vehicleList
+            vehicleList childForm = new vehicleList();
+            childForm.MdiParent = this;
+            
+            childForm.Show();
         }
 
         private void makeDataFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -157,6 +161,21 @@ namespace test
             childForm.MdiParent = this;
             //childForm.Text = "Window " + childFormNumber++;
             childForm.Show();
+        }
+
+        private void printToolStripButton_Click(object sender, EventArgs e)
+        {
+            
+           
+            Graph_on_off childForm = new Graph_on_off();
+            childForm.MdiParent = this;
+            
+            childForm.Show();
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
