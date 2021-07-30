@@ -21,10 +21,10 @@ namespace test
 
         private void ShowNewForm(object sender, EventArgs e)
         {
-            Form childForm = new Form();
-            childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
-            childForm.Show();
+            //Form childForm = new Form();
+            //childForm.MdiParent = this;
+            //childForm.Text = "Window " + childFormNumber++;
+            //childForm.Show();
         }
 
         private void OpenFile(object sender, EventArgs e)
@@ -174,6 +174,20 @@ namespace test
         }
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void printPreviewToolStripButton_Click(object sender, EventArgs e)
+        {
+            //MakeDataFile
+            MakeDataFile childForm = new MakeDataFile();
+            childForm.MdiParent = this;
+            //childForm.Text = "Window " + childFormNumber++;
+            childForm.Show();
+        }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

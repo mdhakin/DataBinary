@@ -73,6 +73,7 @@ namespace test
             UInt32 totalHours = (UInt32)numericUpDown1.Value;
             UInt32 totalminutes = (totalHours * 60) + 20;
             UInt32 currentTstamp = (UInt32)UnixStart;
+            int totalSeconds = (int)(60 * totalminutes);
             UInt32 ee = currentTstamp;
             for (UInt32 i = currentTstamp; i < ee + (60 * totalminutes); i+=10)
             {
@@ -81,12 +82,14 @@ namespace test
                 temp.setTimeStamp(i);
 
 
-                int trytojump = rand.Next(0, 200);
+                int trytojump = rand.Next(0, 2000);
 
-                if (trytojump == 52)
+                UInt32 duration = (UInt32)rand.Next(10, 50000);
+
+                if (trytojump == 7)
                 {
-                    i += 862;
-                    ee += 882;
+                    i += duration;
+                    ee += duration;
                 }
 
 
@@ -191,17 +194,17 @@ namespace test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (roundedTotal < 6000)
-            {
+            //if (roundedTotal < 6000)
+            //{
 
            
-            int convert = Convert.ToInt32(UnixStart);
-            for (UInt32 i = Convert.ToUInt32(convert); i < (UInt32)UnixEnd; i = i + 10)
-            {
-                listBox1.Items.Add(i.ToString());
-            } 
+            //int convert = Convert.ToInt32(UnixStart);
+            //for (UInt32 i = Convert.ToUInt32(convert); i < (UInt32)UnixEnd; i = i + 10)
+            //{
+            //    listBox1.Items.Add(i.ToString());
+            //} 
             
-            }
+            //}
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -235,11 +238,23 @@ namespace test
 
             if (!isThere)
             {
-                Directory.CreateDirectory(textBox1.Text);
-                writeDatToFile(textBox1.Text + "\\5767.dat");
+                if (!(Directory.Exists(textBox1.Text)))
+                {
+                    Directory.CreateDirectory(textBox1.Text);
+                    writeDatToFile(textBox1.Text + "\\5767.dat");
+                    dirListBox1.Refresh();
+                    textBox1.Text = "";
+                    button3.Enabled = false;
+                    button2.Enabled = true;
+                }
+                else
+                {
+                    textBox1.Text = "invalid Directory";
+                }
+                
             }
 
-            dirListBox1.Refresh();
+            
         }
 
         private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
@@ -276,7 +291,7 @@ namespace test
                     time2 = raw.Msgtime[iii];
                     UInt32 diff = time2 - time;
 
-                    if (diff > 60)
+                    if (diff > 20000)
                     {
                         tally++;
                     }
