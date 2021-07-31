@@ -69,7 +69,7 @@ namespace test
                         // backgroundWorker1.RunWorkerAsync()
                         // Start BackgroundWorker
                         //backgroundWorker1.RunWorkerAsync(2000);
-                        loadreadings();
+                        //loadreadings();
                     }
                 }
             }

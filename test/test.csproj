@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DownTimeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DownTimeForm.Designer.cs">
+      <DependentUpon>DownTimeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Factory.cs" />
     <Compile Include="Graph_on_off.cs">
       <SubType>Form</SubType>
@@ -115,6 +121,9 @@
     <Compile Include="vehicleList.Designer.cs">
       <DependentUpon>vehicleList.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DownTimeForm.resx">
+      <DependentUpon>DownTimeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Graph_on_off.resx">
       <DependentUpon>Graph_on_off.cs</DependentUpon>
     </EmbeddedResource>

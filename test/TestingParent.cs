@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace test
 {
@@ -134,7 +135,7 @@ namespace test
 
         private void TestingParent_Load(object sender, EventArgs e)
         {
-
+            OF.InitialDirectory = Application.StartupPath;
         }
 
         private void messageGroupTestToolStripMenuItem_Click(object sender, EventArgs e)
@@ -190,6 +191,26 @@ namespace test
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void helpToolStripButton_Click(object sender, EventArgs e)
+        {
+            OF.Filter = "Text Files|*.csv|All Files|*.*";
+            OF.ShowDialog();
+
+
+
+            if (OF.FileName.Contains("VehicleID") && File.Exists(OF.FileName))
+            {
+
+                DownTimeForm frm = new DownTimeForm(OF.FileName);
+                frm.MdiParent = this;
+                frm.Show();
+
+            }else
+            {
+                MessageBox.Show("Invalad File Name!");
+            }
         }
     }
 }
