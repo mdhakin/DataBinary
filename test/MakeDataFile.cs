@@ -39,10 +39,7 @@ namespace test
 
         private void makedataFile()
         {
-
             UInt16[] ids = new UInt16[15];
-
-            
 
             ids[0] = 500;
             ids[1] = 206;
@@ -77,10 +74,8 @@ namespace test
             UInt32 ee = currentTstamp;
             for (UInt32 i = currentTstamp; i < ee + (60 * totalminutes); i+=10)
             {
-                
                 MessageGroup.MessageGroup temp = new MessageGroup.MessageGroup();
                 temp.setTimeStamp(i);
-
 
                 int trytojump = rand.Next(0, 2000);
 
@@ -92,22 +87,13 @@ namespace test
                     ee += duration;
                 }
 
-
-
                 for (int j = 0; j < 11; j++)
                 {
                     temp.SetMessages(ids[j], (byte)rand.Next(0, 255), (byte)rand.Next(0, 255), (byte)rand.Next(0, 255), (byte)rand.Next(0, 255), (byte)rand.Next(0, 255), (byte)rand.Next(0, 255), (byte)rand.Next(0, 255), (byte)rand.Next(0, 255), j);
                 }
                 MessageList.Add(temp);
-
-
-
-
             }
-
-
         }
-
 
         private void writeDatToFile(string path)
         {
@@ -122,7 +108,6 @@ namespace test
                     for (int j = 0; j < 11; j++)
                     {
 
-                   
                         UInt16 msgid = (UInt16)MessageList[i].MesssageID[j];
                         byte f0 = MessageList[i].frame0[j];
                         byte f1 = MessageList[i].frame1[j];

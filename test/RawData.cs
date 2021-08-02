@@ -69,7 +69,7 @@ namespace test
                         // backgroundWorker1.RunWorkerAsync()
                         // Start BackgroundWorker
                         //backgroundWorker1.RunWorkerAsync(2000);
-                        //loadreadings();
+                        loadreadings();
                     }
                 }
             }
@@ -82,7 +82,15 @@ namespace test
             listBox2.Items.Clear();
 
             string[] radings = new string[raw.RecordCount];
-            for (int i = 0; i < raw.RecordCount; i++)
+
+            long tempcount = raw.RecordCount;
+
+            if (tempcount > 199)
+            {
+                tempcount = 100;
+            }
+
+            for (int i = 0; i < tempcount; i++)
             {
                 radings[i] = (i + 1).ToString() + "\t" + UT.UnixTimeStampToDateTime( Convert.ToDouble(raw.Msgtime[i])) + "\t" + raw.Msgid[i] + "\t" + raw.F0[i] + "\t" + raw.F1[i] + "\t" + raw.F2[i] + "\t" + raw.F3[i] + "\t" + raw.F4[i] + "\t" + raw.F5[i] + "\t" + raw.F6[i] + "\t" + raw.F7[i];
             

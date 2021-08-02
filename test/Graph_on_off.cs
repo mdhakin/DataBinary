@@ -93,9 +93,6 @@ namespace test
                 {
                     loaddats(OF.FileName);
 
-                    
-
-
                 }
             }
 
