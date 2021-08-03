@@ -22,10 +22,10 @@ namespace test
 
         private void ShowNewForm(object sender, EventArgs e)
         {
-            //Form childForm = new Form();
-            //childForm.MdiParent = this;
+            CombineData childForm = new CombineData();
+            childForm.MdiParent = this;
             //childForm.Text = "Window " + childFormNumber++;
-            //childForm.Show();
+            childForm.Show();
         }
 
         private void OpenFile(object sender, EventArgs e)

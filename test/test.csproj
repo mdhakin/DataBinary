@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CombineData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CombineData.Designer.cs">
+      <DependentUpon>CombineData.cs</DependentUpon>
+    </Compile>
     <Compile Include="DownTimeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,9 @@
     <Compile Include="vehicleList.Designer.cs">
       <DependentUpon>vehicleList.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CombineData.resx">
+      <DependentUpon>CombineData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DownTimeForm.resx">
       <DependentUpon>DownTimeForm.cs</DependentUpon>
     </EmbeddedResource>
