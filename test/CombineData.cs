@@ -143,9 +143,17 @@ namespace test
 
 
             List<string> gaps3 = loaddats(primary, Convert.ToUInt32(comboBox1.Text));
+            MessageBox.Show("The First Item is " + primary.FileStartDate.ToString() + " The Second is " + Secondary.FileStartDate.ToString());
 
+            for (int i = 5; i < gaps3.Count; i++)
+            {
 
-            MessageBox.Show("The First Item is " + primary.Filename + " The Second is " + Secondary.Filename);
+                string[] parts = gaps3[i].Split(',');
+
+                UInt32 nextgapstart = Convert.ToUInt32(parts[2]);
+                UInt32 nextgapend = Convert.ToUInt32(parts[4]);
+
+            }
         }
 
         private List<string> loaddats(DataBinary.RawFile raw, UInt32 timeCutoff)
