@@ -145,6 +145,31 @@ namespace test
             List<string> gaps3 = loaddats(primary, Convert.ToUInt32(comboBox1.Text));
             MessageBox.Show("The First Item is " + primary.FileStartDate.ToString() + " The Second is " + Secondary.FileStartDate.ToString());
 
+            List<MessageGroup.MessageGroup> grp = new List<MessageGroup.MessageGroup>();
+
+            for (int i = 0; i < primary.RecordCount; i++)
+            {
+                MessageGroup.MessageGroup temp = new MessageGroup.MessageGroup();
+
+                for (int j = 0; j < 12; j++)
+                {
+                    temp.setTimeStamp(primary.Msgtime[i]);
+                    temp.MesssageID[j] = primary.Msgid[i + j];
+                    temp.frame0[j] = primary.F0[i + j];
+                    temp.frame1[j] = primary.F1[i + j];
+                    temp.frame2[j] = primary.F2[i + j];
+                    temp.frame3[j] = primary.F3[i + j];
+                    temp.frame4[j] = primary.F4[i + j];
+                    temp.frame5[j] = primary.F5[i + j];
+                    temp.frame6[j] = primary.F6[i + j];
+                    temp.frame7[j] = primary.F7[i + j];
+                    i++;
+                }
+                grp.Add(temp);
+
+            }
+
+
             for (int i = 5; i < gaps3.Count; i++)
             {
 
@@ -152,6 +177,9 @@ namespace test
 
                 UInt32 nextgapstart = Convert.ToUInt32(parts[2]);
                 UInt32 nextgapend = Convert.ToUInt32(parts[4]);
+
+
+
 
             }
         }
