@@ -143,15 +143,15 @@ namespace test
 
 
             List<string> gaps3 = loaddats(primary, Convert.ToUInt32(comboBox1.Text));
-            MessageBox.Show("The First Item is " + primary.FileStartDate.ToString() + " The Second is " + Secondary.FileStartDate.ToString());
+            //MessageBox.Show("The First Item is " + primary.FileStartDate.ToString() + " The Second is " + Secondary.FileStartDate.ToString());
 
             List<MessageGroup.MessageGroup> grp = new List<MessageGroup.MessageGroup>();
 
-            for (int i = 0; i < primary.RecordCount; i++)
+            for (int i = 0; i < primary.RecordCount - 11; i++)
             {
                 MessageGroup.MessageGroup temp = new MessageGroup.MessageGroup();
 
-                for (int j = 0; j < 12; j++)
+                for (int j = 0; j < 11; j++)
                 {
                     temp.setTimeStamp(primary.Msgtime[i]);
                     temp.MesssageID[j] = primary.Msgid[i + j];
@@ -163,9 +163,10 @@ namespace test
                     temp.frame5[j] = primary.F5[i + j];
                     temp.frame6[j] = primary.F6[i + j];
                     temp.frame7[j] = primary.F7[i + j];
-                    i++;
+                    //i++;
                 }
                 grp.Add(temp);
+                i += 10;
 
             }
 
@@ -178,7 +179,29 @@ namespace test
                 UInt32 nextgapstart = Convert.ToUInt32(parts[2]);
                 UInt32 nextgapend = Convert.ToUInt32(parts[4]);
 
-
+                for (int j = 0; j < Secondary.RecordCount; j++)
+                {
+                    if (Secondary.Msgtime[j] > nextgapstart && Secondary.Msgtime[j] < nextgapend)
+                    {
+                        MessageGroup.MessageGroup temp3 = new MessageGroup.MessageGroup();
+                        temp3.setTimeStamp(Secondary.Msgtime[j]);
+                        for (int k = 0; k < 11; k++)
+                        {
+                            temp3.MesssageID[k] = Secondary.Msgid[j];
+                            temp3.frame0[k] = Secondary.F0[j];
+                            temp3.frame1[k] = Secondary.F1[j];
+                            temp3.frame2[k] = Secondary.F2[j];
+                            temp3.frame3[k] = Secondary.F3[j];
+                            temp3.frame4[k] = Secondary.F4[j];
+                            temp3.frame5[k] = Secondary.F5[j];
+                            temp3.frame6[k] = Secondary.F6[j];
+                            temp3.frame7[k] = Secondary.F7[j];
+                            
+                        }
+                        grp.Insert(j, temp3);
+                        i += 10;
+                    }
+                }
 
 
             }
