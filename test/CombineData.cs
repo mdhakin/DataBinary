@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
-
+using System.Linq;
 namespace test
 {
     public partial class CombineData : Form
@@ -124,7 +124,7 @@ namespace test
             }
         }
 
-        private void runCombine(DataBinary.RawFile raw1,DataBinary.RawFile raw2)
+        private void runCombine(DataBinary.RawFile raw1, DataBinary.RawFile raw2)
         {
             DataBinary.RawFile primary;
             DataBinary.RawFile Secondary;
@@ -171,39 +171,121 @@ namespace test
             }
 
 
+            int insertcount = 0;
+           
             for (int i = 5; i < gaps3.Count; i++)
             {
-
+                string lineone = "";
+                string linetwo = "";
                 string[] parts = gaps3[i].Split(',');
+
+                
 
                 UInt32 nextgapstart = Convert.ToUInt32(parts[2]);
                 UInt32 nextgapend = Convert.ToUInt32(parts[4]);
+
+                listBox3.Items.Add(nextgapstart.ToString());
+                listBox4.Items.Add(nextgapend.ToString());
 
                 for (int j = 0; j < Secondary.RecordCount; j++)
                 {
                     if (Secondary.Msgtime[j] > nextgapstart && Secondary.Msgtime[j] < nextgapend)
                     {
+                        listBox5.Items.Add(Secondary.Msgtime[j].ToString());
                         MessageGroup.MessageGroup temp3 = new MessageGroup.MessageGroup();
                         temp3.setTimeStamp(Secondary.Msgtime[j]);
                         for (int k = 0; k < 11; k++)
                         {
-                            temp3.MesssageID[k] = Secondary.Msgid[j];
-                            temp3.frame0[k] = Secondary.F0[j];
-                            temp3.frame1[k] = Secondary.F1[j];
-                            temp3.frame2[k] = Secondary.F2[j];
-                            temp3.frame3[k] = Secondary.F3[j];
-                            temp3.frame4[k] = Secondary.F4[j];
-                            temp3.frame5[k] = Secondary.F5[j];
-                            temp3.frame6[k] = Secondary.F6[j];
-                            temp3.frame7[k] = Secondary.F7[j];
-                            
+                            temp3.MesssageID[k] = Secondary.Msgid[j + k];
+                            temp3.frame0[k] = Secondary.F0[j + k];
+                            temp3.frame1[k] = Secondary.F1[j + k];
+                            temp3.frame2[k] = Secondary.F2[j + k];
+                            temp3.frame3[k] = Secondary.F3[j + k];
+                            temp3.frame4[k] = Secondary.F4[j + k];
+                            temp3.frame5[k] = Secondary.F5[j + k];
+                            temp3.frame6[k] = Secondary.F6[j + k];
+                            temp3.frame7[k] = Secondary.F7[j + k];
+
                         }
-                        grp.Insert(j, temp3);
-                        i += 10;
+                        grp.Insert(0, temp3);
+                        insertcount++;
+                        j += 10;
                     }
                 }
 
+               
+            }
+            grp = grp.OrderBy(x => x.timestamp).ToList();
+            this.Text = insertcount.ToString();
+            //int dd = grp[1].MesssageID[0];
 
+            string[] timestamps = new string[grp.Count];
+
+            //string[] output = new string[grp.Count];
+
+            for (int i = 0; i < grp.Count; i++)
+            {
+                timestamps[i] = grp[i].timestamp.ToString();
+            }
+
+            //this.Text = this.Text + " ts: " + timestamps.Length.ToString();
+
+            if (File.Exists(@"C:\output\test.dat"))
+            {
+                File.Delete(@"C:\output\test.dat");
+            }
+
+            //File.WriteAllLines(@"C:\Users\mhakin.TRIDOMAIN\Desktop\out.txt", timestamps);
+
+
+            makenewrawfile(grp, @"C:\output\test.dat");
+        }
+
+        private void makenewrawfile(List<MessageGroup.MessageGroup> grp, string path)
+        {
+            using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.Append)))
+            {
+                for (int i = 0; i < grp.Count - 11; i++)
+                {
+                    for (int j = 0; j < 11; j++)
+                    {
+                        UInt32 ts = grp[i].timestamp;
+                        UInt16 msgid = (UInt16)grp[i].MesssageID[j];
+                        byte f0 = (byte)grp[i].frame0[j];
+                        byte f1 = (byte)grp[i].frame1[j];
+                        byte f2 = (byte)grp[i].frame2[j];
+                        byte f3 = (byte)grp[i].frame3[j];
+                        byte f4 = (byte)grp[i].frame4[j];
+                        byte f5 = (byte)grp[i].frame5[j];
+                        byte f6 = (byte)grp[i].frame6[j];
+                        byte f7 = (byte)grp[i].frame7[j];
+
+                        writer.Write(ts);
+                        writer.Write(msgid);
+                        writer.Write(f0);
+                        writer.Write(f1);
+                        writer.Write(f2);
+                        writer.Write(f3);
+                        writer.Write(f4);
+                        writer.Write(f5);
+                        writer.Write(f6);
+                        writer.Write(f7);
+                        //writer.Write(grp[i].timestamp);
+                        //writer.Write(grp[i + j].MesssageID[j]);
+                        //writer.Write(grp[i + j].frame0[j]);
+                        //writer.Write(grp[i + j].frame1[j]);
+                        //writer.Write(grp[i + j].frame2[j]);
+                        //writer.Write(grp[i + j].frame3[j]);
+                        //writer.Write(grp[i + j].frame4[j]);
+                        //writer.Write(grp[i + j].frame5[j]);
+                        //writer.Write(grp[i + j].frame6[j]);
+
+                    }
+
+                }
+
+
+                writer.Close();
             }
         }
 
@@ -300,6 +382,16 @@ namespace test
         private void button1_Click(object sender, EventArgs e)
         {
             setitemsForanalysis();
+        }
+
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox3.SelectedIndex > -1)
+            {
+                listBox4.SelectedIndex = listBox3.SelectedIndex;
+                textBox1.Text = listBox3.Text;
+                textBox2.Text = listBox4.Text;
+            }
         }
     }
 }

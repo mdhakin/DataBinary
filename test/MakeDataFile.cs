@@ -103,11 +103,11 @@ namespace test
                 for (int i = 0; i < MessageList.Count; i++)
                 {
 
-                    UInt32 ts = (UInt32)MessageList[i].timestamp;
+                    
 
                     for (int j = 0; j < 11; j++)
                     {
-
+                        UInt32 ts = (UInt32)MessageList[i].timestamp;
                         UInt16 msgid = (UInt16)MessageList[i].MesssageID[j];
                         byte f0 = MessageList[i].frame0[j];
                         byte f1 = MessageList[i].frame1[j];

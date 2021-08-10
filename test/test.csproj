@@ -127,6 +127,12 @@
     <Compile Include="vehicleList.Designer.cs">
       <DependentUpon>vehicleList.cs</DependentUpon>
     </Compile>
+    <Compile Include="viewDataFiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewDataFiles.Designer.cs">
+      <DependentUpon>viewDataFiles.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CombineData.resx">
       <DependentUpon>CombineData.cs</DependentUpon>
     </EmbeddedResource>

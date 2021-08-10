@@ -70,6 +70,10 @@ namespace test
                         // Start BackgroundWorker
                         //backgroundWorker1.RunWorkerAsync(2000);
                         loadreadings();
+                    }else
+
+                    {
+                        MessageBox.Show(raw.Error());
                     }
                 }
             }
