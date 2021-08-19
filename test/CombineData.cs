@@ -3,10 +3,25 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 using System.Linq;
+using System.Diagnostics;
+
 namespace test
 {
     public partial class CombineData : Form
     {
+        public struct msg
+        {
+            public uint ts;
+            public ushort msgID;
+            public byte f0;
+            public byte f1;
+            public byte f2;
+            public byte f3;
+            public byte f4;
+            public byte f5;
+            public byte f6;
+            public byte f7;
+        }
         public CombineData()
         {
             InitializeComponent();
@@ -106,7 +121,8 @@ namespace test
                 {
                     if (selectedItems[0] != -1 && selectedItems[1] != -1)
                     {
-                        runCombine(raws[selectedItems[0]],raws[selectedItems[1]]);
+                        // runCombine(raws[selectedItems[0]],raws[selectedItems[1]]);
+                        RunCombine2(raws[selectedItems[0]], raws[selectedItems[1]]);
                         sttate = theState.none;
                         UpdateView();
                     }else
@@ -123,6 +139,172 @@ namespace test
                 }
             }
         }
+
+
+        private void writeOutputFile(msg[] iinput, string fileName, UInt32 count)
+        {
+            if (File.Exists(fileName))
+            {
+                File.Delete(fileName);
+            }
+            using (BinaryWriter writer = new BinaryWriter(File.Open(fileName, FileMode.Create)))
+            {
+                for (UInt32 i = 0; i < count; i++)
+                {
+                    writer.Write(iinput[i].ts);
+                    writer.Write(iinput[i].msgID);
+                    writer.Write(iinput[i].f0);
+                    writer.Write(iinput[i].f1);
+                    writer.Write(iinput[i].f2);
+                    writer.Write(iinput[i].f3);
+                    writer.Write(iinput[i].f4);
+                    writer.Write(iinput[i].f5);
+                    writer.Write(iinput[i].f6);
+                    writer.Write(iinput[i].f7);
+                }
+                //writer.Write(1.250F);
+                //writer.Write(@"c:\Temp");
+                //writer.Write(10);
+                //writer.Write(true);
+            }
+        }
+
+        private void RunCombine2(DataBinary.RawFile raw1, DataBinary.RawFile raw2)
+        {
+            
+            DataBinary.RawFile primary;
+            DataBinary.RawFile Secondary;
+
+            // See which rawfile starts earlier
+            if (raw1.Msgtime[0] > raw2.Msgtime[0])
+            {
+                primary = raw2;
+                Secondary = raw1;
+            }
+            else
+            {
+                primary = raw1;
+                Secondary = raw2;
+            }
+
+            // loaddats is the fuction that loads the breaks in the data. 
+            // comboBox1 holds the min time a gap has to be to count it as a gap
+            List<string> gaps3 = loaddats(primary, Convert.ToUInt32(comboBox1.Text));
+
+            UInt32 combinedTotal = (UInt32)(primary.RecordCount + Secondary.RecordCount);
+            UInt32 ct = 0;
+
+            msg[] t = new msg[combinedTotal];
+            var watch = new Stopwatch();
+            watch.Start();
+
+            string[] parts = gaps3[5].Split(',');
+            // 2 4
+
+            UInt32 currentPrimaryRecord = 0;
+            //UInt32 currentSecondaryRecord = 0;
+            UInt32 currentOutputRecord = 0;
+
+            for (int i = 0; i < gaps3.Count - 5; i++)
+            {
+                UInt32 startTS = Convert.ToUInt32(parts[2]);
+                UInt32 endTS = Convert.ToUInt32(parts[4]);
+
+                // fill the output array until the current gap starts
+
+               
+                while (currentPrimaryRecord < startTS && currentOutputRecord < primary.RecordCount)
+                {
+
+                    for (int g = 0; g < 11; g++)
+                    {
+                        t[currentOutputRecord].ts = primary.Msgtime[currentPrimaryRecord];
+                        t[currentOutputRecord].msgID = primary.Msgid[currentPrimaryRecord];
+                        t[currentOutputRecord].f0 = primary.F0[currentPrimaryRecord];
+                        t[currentOutputRecord].f1 = primary.F1[currentPrimaryRecord];
+                        t[currentOutputRecord].f2 = primary.F2[currentPrimaryRecord];
+                        t[currentOutputRecord].f3 = primary.F3[currentPrimaryRecord];
+                        t[currentOutputRecord].f4 = primary.F4[currentPrimaryRecord];
+                        t[currentOutputRecord].f5 = primary.F5[currentPrimaryRecord];
+                        t[currentOutputRecord].f6 = primary.F6[currentPrimaryRecord];
+                        t[currentOutputRecord].f7 = primary.F7[currentPrimaryRecord];
+                        currentOutputRecord++;
+                        currentPrimaryRecord++;
+                    }
+                    
+                }
+
+
+
+                if (currentOutputRecord < combinedTotal)
+                {
+
+
+                    for (int f = 0; f < Secondary.RecordCount; f++)
+                    {
+                        if (Secondary.Msgtime[f] > startTS && Secondary.Msgtime[f] < endTS || currentPrimaryRecord >= primary.RecordCount)
+                        {
+                            t[currentOutputRecord].ts = Secondary.Msgtime[f];
+                            t[currentOutputRecord].msgID = Secondary.Msgid[f];
+                            t[currentOutputRecord].f0 = Secondary.F0[f];
+                            t[currentOutputRecord].f1 = Secondary.F1[f];
+                            t[currentOutputRecord].f2 = Secondary.F2[f];
+                            t[currentOutputRecord].f3 = Secondary.F3[f];
+                            t[currentOutputRecord].f4 = Secondary.F4[f];
+                            t[currentOutputRecord].f5 = Secondary.F5[f];
+                            t[currentOutputRecord].f6 = Secondary.F6[f];
+                            t[currentOutputRecord].f7 = Secondary.F7[f];
+
+                            currentOutputRecord++;
+                        }
+
+                    }
+
+                }
+                //listBox6.Items.Add(tempct.ToString());
+
+
+            }
+
+
+            writeOutputFile(t, @"C:\output\5871\5871.dat", currentOutputRecord);
+
+
+
+
+            //// fill the array until the first break in data
+            //for (int i = 0; i < primary.RecordCount; i++)
+            //{
+            //    t[i].ts = primary.Msgtime[i];
+            //    t[i].msgID = primary.Msgid[i];
+
+            //    t[i].f0 = primary.F0[i];
+            //    t[i].f1 = primary.F1[i];
+            //    t[i].f2 = primary.F2[i];
+            //    t[i].f3 = primary.F3[i];
+            //    t[i].f4 = primary.F4[i];
+            //    t[i].f5 = primary.F5[i];
+            //    t[i].f6 = primary.F6[i];
+            //    t[i].f7 = primary.F7[i];
+            //    ct++;
+            //}
+
+
+
+
+            watch.Stop();
+
+            MessageBox.Show(watch.ElapsedMilliseconds.ToString() + " ms, records written: " + currentOutputRecord.ToString());
+
+            // msg[] combined = new msg[combinedTotal];
+
+
+
+
+        }
+
+
+
 
         private void runCombine(DataBinary.RawFile raw1, DataBinary.RawFile raw2)
         {

@@ -41,6 +41,7 @@ namespace test
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.listBox5 = new System.Windows.Forms.ListBox();
+            this.listBox6 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // listBox1
@@ -155,11 +156,20 @@ namespace test
             this.listBox5.Size = new System.Drawing.Size(120, 368);
             this.listBox5.TabIndex = 14;
             // 
+            // listBox6
+            // 
+            this.listBox6.FormattingEnabled = true;
+            this.listBox6.Location = new System.Drawing.Point(185, 317);
+            this.listBox6.Name = "listBox6";
+            this.listBox6.Size = new System.Drawing.Size(120, 225);
+            this.listBox6.TabIndex = 15;
+            // 
             // CombineData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(999, 600);
+            this.Controls.Add(this.listBox6);
             this.Controls.Add(this.listBox5);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -192,5 +202,6 @@ namespace test
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ListBox listBox5;
+        private System.Windows.Forms.ListBox listBox6;
     }
 }
