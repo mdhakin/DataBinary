@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateDataset.cs" />
     <Compile Include="IRawFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RawFile.cs" />

@@ -89,7 +89,7 @@ namespace test
 
             long tempcount = raw.RecordCount;
 
-            if (tempcount > 199)
+            if (tempcount > 1299)
             {
                 tempcount = 100;
             }

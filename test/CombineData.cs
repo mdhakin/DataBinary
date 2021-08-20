@@ -122,7 +122,7 @@ namespace test
                     if (selectedItems[0] != -1 && selectedItems[1] != -1)
                     {
                         // runCombine(raws[selectedItems[0]],raws[selectedItems[1]]);
-                        RunCombine2(raws[selectedItems[0]], raws[selectedItems[1]]);
+                        RunCombine3(raws[selectedItems[0]], raws[selectedItems[1]]);
                         sttate = theState.none;
                         UpdateView();
                     }else
@@ -168,6 +168,133 @@ namespace test
                 //writer.Write(true);
             }
         }
+
+        private void RunCombine3(DataBinary.RawFile raw1, DataBinary.RawFile raw2)
+        {
+            DataBinary.RawFile primary;
+            DataBinary.RawFile Secondary;
+
+            // See which rawfile starts earlier
+            if (raw1.Msgtime[0] > raw2.Msgtime[0])
+            {
+                primary = raw2;
+                Secondary = raw1;
+            }
+            else
+            {
+                primary = raw1;
+                Secondary = raw2;
+            }
+
+            // loaddats is the fuction that loads the breaks in the data. 
+            // comboBox1 holds the min time a gap has to be to count it as a gap
+            List<string> gaps3 = loaddats(primary, Convert.ToUInt32(comboBox1.Text));
+
+            UInt32 combinedTotal = (UInt32)(primary.RecordCount + Secondary.RecordCount);
+            UInt32 ct = 0;
+
+            msg[] t = new msg[combinedTotal];
+            var watch = new Stopwatch();
+            watch.Start();
+
+            UInt32[] gapstarts = new UInt32[gaps3.Count - 5];
+            UInt32[] gapends = new UInt32[gaps3.Count - 5];
+
+            for (int i = 5; i < gaps3.Count; i++)
+            {
+                string[] parts = gaps3[i].Split(',');
+
+                gapstarts[i - 5] = Convert.ToUInt32(parts[2]);
+                gapends[i - 5] = Convert.ToUInt32(parts[4]);
+            }
+
+            UInt32 lastPrimaryIndex = 0;
+            UInt32 lastSecondaryIndex = 0;
+            UInt32 lastnewIndex = 0;
+            for (int i = 0; i < gapstarts.Length; i++)
+            {
+                // fill all primary up until the first gap starts
+                while (primary.Msgtime[lastPrimaryIndex] < gapstarts[i])
+                {
+                    t[lastnewIndex].ts = primary.Msgtime[lastPrimaryIndex];
+                    t[lastnewIndex].msgID = primary.Msgid[lastPrimaryIndex];
+                    t[lastnewIndex].f0 = primary.F0[lastPrimaryIndex];
+                    t[lastnewIndex].f1 = primary.F1[lastPrimaryIndex];
+                    t[lastnewIndex].f2 = primary.F2[lastPrimaryIndex];
+                    t[lastnewIndex].f3 = primary.F3[lastPrimaryIndex];
+                    t[lastnewIndex].f4 = primary.F4[lastPrimaryIndex];
+                    t[lastnewIndex].f5 = primary.F5[lastPrimaryIndex];
+                    t[lastnewIndex].f6 = primary.F6[lastPrimaryIndex];
+                    t[lastnewIndex].f7 = primary.F7[lastPrimaryIndex];
+                    lastnewIndex++;
+                    lastPrimaryIndex++;
+                }
+
+                // find items in the secondary that fall in the current gap 
+                // add those to the file
+
+                for (int j = 0; j < Secondary.RecordCount; j++)
+                {
+                    if (Secondary.Msgtime[j] > gapstarts[i] && Secondary.Msgtime[j] < gapends[i])
+                    {
+                        t[lastnewIndex].ts = Secondary.Msgtime[j];
+                        t[lastnewIndex].msgID = Secondary.Msgid[j];
+                        t[lastnewIndex].f0 = Secondary.F0[j];
+                        t[lastnewIndex].f1 = Secondary.F1[j];
+                        t[lastnewIndex].f2 = Secondary.F2[j];
+                        t[lastnewIndex].f3 = Secondary.F3[j];
+                        t[lastnewIndex].f4 = Secondary.F4[j];
+                        t[lastnewIndex].f5 = Secondary.F5[j];
+                        t[lastnewIndex].f6 = Secondary.F6[j];
+                        t[lastnewIndex].f7 = Secondary.F7[j];
+                        lastnewIndex++;
+                        //lastSecondaryIndex++;
+                    }
+                }
+
+                if (i == gaps3.Count - 6)
+                {
+
+                    while (lastPrimaryIndex < primary.RecordCount)
+                    {
+                        if (primary.Msgtime[lastPrimaryIndex] > gapends[i])
+                        {
+                            t[lastnewIndex].ts = primary.Msgtime[lastPrimaryIndex];
+                            t[lastnewIndex].msgID = primary.Msgid[lastPrimaryIndex];
+                            t[lastnewIndex].f0 = primary.F0[lastPrimaryIndex];
+                            t[lastnewIndex].f1 = primary.F1[lastPrimaryIndex];
+                            t[lastnewIndex].f2 = primary.F2[lastPrimaryIndex];
+                            t[lastnewIndex].f3 = primary.F3[lastPrimaryIndex];
+                            t[lastnewIndex].f4 = primary.F4[lastPrimaryIndex];
+                            t[lastnewIndex].f5 = primary.F5[lastPrimaryIndex];
+                            t[lastnewIndex].f6 = primary.F6[lastPrimaryIndex];
+                            t[lastnewIndex].f7 = primary.F7[lastPrimaryIndex];
+                            lastnewIndex++;
+                        }
+                        
+                        lastPrimaryIndex++;
+                    }
+
+
+                }
+
+
+
+            }
+
+
+
+
+            //go to the next gap and start again
+
+            writeOutputFile(t, @"C:\output\5871\5871.dat", lastnewIndex);
+
+
+            watch.Stop();
+            MessageBox.Show(watch.ElapsedMilliseconds.ToString() + " ms");
+        }
+
+
 
         private void RunCombine2(DataBinary.RawFile raw1, DataBinary.RawFile raw2)
         {
@@ -574,6 +701,15 @@ namespace test
                 textBox1.Text = listBox3.Text;
                 textBox2.Text = listBox4.Text;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataBinary.CreateDataset data = new DataBinary.CreateDataset(1500000000,330,7);
+            data.CreateDatasetFor(Application.StartupPath + "\\output\\6459\\6459.dat",255);
+
+            DataBinary.CreateDataset data2 = new DataBinary.CreateDataset(1500000061, 330, 7);
+            data2.CreateDatasetFor(Application.StartupPath + "\\output\\6511\\6511.dat",155);
         }
     }
 }
