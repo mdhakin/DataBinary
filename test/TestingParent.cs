@@ -212,5 +212,20 @@ namespace test
                 MessageBox.Show("Invalad File Name!");
             }
         }
+
+        private void addMessagesToFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            OpenAddMsgesToFile();
+
+        }
+
+        private void OpenAddMsgesToFile()
+        {
+            AddMessageToFile childForm = new AddMessageToFile();
+            childForm.MdiParent = this;
+            childForm.Text = "Add Messages to File";
+            childForm.Show();
+        }
     }
 }

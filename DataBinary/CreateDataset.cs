@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-
+using System.Data;
 namespace DataBinary
 {
     public class CreateDataset
@@ -43,6 +43,60 @@ namespace DataBinary
             strarttime = startTime;
             whenToGap = LoopNumToGap;
             
+        }
+
+        public void addMessageToFile(msg[] msges, string fName)
+        {
+            string sFileName = fName;
+
+
+            using (BinaryWriter writer = new BinaryWriter(File.Open(sFileName, FileMode.Append)))
+            {
+                for (int i = 0; i < msges.Length; i++)
+                {
+                    writer.Write(msges[i].ts);
+                    writer.Write(msges[i].msgID);
+                    writer.Write(msges[i].f0);
+                    writer.Write(msges[i].f1);
+                    writer.Write(msges[i].f2);
+                    writer.Write(msges[i].f3);
+                    writer.Write(msges[i].f4);
+                    writer.Write(msges[i].f5);
+                    writer.Write(msges[i].f6);
+                    writer.Write(msges[i].f7);
+                }
+                writer.Close();
+            }
+
+
+        }
+
+        public static void WriteDatatableToFile(ref DataTable dt, string sFileName)
+        {
+            if (File.Exists(sFileName))
+            {
+                File.Delete(sFileName);
+            }
+
+            using (BinaryWriter writer = new BinaryWriter(File.Open(sFileName, FileMode.Create)))
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    writer.Write((UInt32)dr.Field<UInt32>(0));
+                    writer.Write((UInt16)dr.Field<UInt16>(1));
+                    writer.Write((byte)dr.Field<byte>(2));
+                    writer.Write((byte)dr.Field<byte>(3));
+                    writer.Write((byte)dr.Field<byte>(4));
+                    writer.Write((byte)dr.Field<byte>(5));
+                    writer.Write((byte)dr.Field<byte>(6));
+                    writer.Write((byte)dr.Field<byte>(7));
+                    writer.Write((byte)dr.Field<byte>(8));
+                    writer.Write((byte)dr.Field<byte>(9));
+                }
+                writer.Close();
+            }
+
         }
 
 

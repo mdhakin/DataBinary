@@ -72,6 +72,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddMessageToFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMessageToFile.Designer.cs">
+      <DependentUpon>AddMessageToFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="CombineData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     <Compile Include="viewDataFiles.Designer.cs">
       <DependentUpon>viewDataFiles.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddMessageToFile.resx">
+      <DependentUpon>AddMessageToFile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CombineData.resx">
       <DependentUpon>CombineData.cs</DependentUpon>
     </EmbeddedResource>

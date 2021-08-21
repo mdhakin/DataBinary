@@ -216,7 +216,7 @@ namespace DataBinary
                             }
                         }
                     }
-                    if (this.m_msgtime[i] < 1500000000)
+                    if (this.m_msgtime[i] < 0)
                     {
                         this.m_Count = 0;
                         this.fileready = false;

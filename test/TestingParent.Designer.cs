@@ -89,6 +89,7 @@ namespace test
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.OF = new System.Windows.Forms.OpenFileDialog();
+            this.addMessagesToFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -98,9 +99,9 @@ namespace test
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
+            this.toolsMenu,
             this.editMenu,
             this.viewMenu,
-            this.toolsMenu,
             this.windowsMenu,
             this.helpMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
@@ -330,7 +331,8 @@ namespace test
             this.rawDataFileTestToolStripMenuItem,
             this.vehicleListToolStripMenuItem,
             this.messageGroupTestToolStripMenuItem,
-            this.makeDataFileToolStripMenuItem});
+            this.makeDataFileToolStripMenuItem,
+            this.addMessagesToFileToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(46, 20);
             this.toolsMenu.Text = "&Tools";
@@ -587,6 +589,13 @@ namespace test
             this.OF.FileName = "openFileDialog1";
             this.OF.Filter = "Text Files|*.csv|All Files|*.*";
             // 
+            // addMessagesToFileToolStripMenuItem
+            // 
+            this.addMessagesToFileToolStripMenuItem.Name = "addMessagesToFileToolStripMenuItem";
+            this.addMessagesToFileToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.addMessagesToFileToolStripMenuItem.Text = "AddMessages to File";
+            this.addMessagesToFileToolStripMenuItem.Click += new System.EventHandler(this.addMessagesToFileToolStripMenuItem_Click);
+            // 
             // TestingParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -673,6 +682,7 @@ namespace test
         private System.Windows.Forms.ToolStripMenuItem messageGroupTestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem makeDataFileToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog OF;
+        private System.Windows.Forms.ToolStripMenuItem addMessagesToFileToolStripMenuItem;
     }
 }
 
