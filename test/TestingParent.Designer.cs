@@ -44,6 +44,15 @@ namespace test
             this.printSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataLoggingParametersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rawDataFileTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vehicleListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.messageGroupTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.makeDataFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addMessagesToFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testCombineRawFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,13 +65,6 @@ namespace test
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataLoggingParametersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rawDataFileTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.vehicleListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.messageGroupTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.makeDataFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,7 +91,6 @@ namespace test
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.OF = new System.Windows.Forms.OpenFileDialog();
-            this.addMessagesToFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -212,6 +213,76 @@ namespace test
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolsStripMenuItem_Click);
             // 
+            // toolsMenu
+            // 
+            this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.optionsToolStripMenuItem,
+            this.dataLoggingParametersToolStripMenuItem,
+            this.rawDataFileTestToolStripMenuItem,
+            this.vehicleListToolStripMenuItem,
+            this.messageGroupTestToolStripMenuItem,
+            this.makeDataFileToolStripMenuItem,
+            this.addMessagesToFileToolStripMenuItem,
+            this.testCombineRawFileToolStripMenuItem});
+            this.toolsMenu.Name = "toolsMenu";
+            this.toolsMenu.Size = new System.Drawing.Size(46, 20);
+            this.toolsMenu.Text = "&Tools";
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.optionsToolStripMenuItem.Text = "&Options";
+            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
+            // 
+            // dataLoggingParametersToolStripMenuItem
+            // 
+            this.dataLoggingParametersToolStripMenuItem.Name = "dataLoggingParametersToolStripMenuItem";
+            this.dataLoggingParametersToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.dataLoggingParametersToolStripMenuItem.Text = "Data Logging Parameters";
+            // 
+            // rawDataFileTestToolStripMenuItem
+            // 
+            this.rawDataFileTestToolStripMenuItem.Name = "rawDataFileTestToolStripMenuItem";
+            this.rawDataFileTestToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.rawDataFileTestToolStripMenuItem.Text = "Raw Data File Test";
+            this.rawDataFileTestToolStripMenuItem.Click += new System.EventHandler(this.rawDataFileTestToolStripMenuItem_Click);
+            // 
+            // vehicleListToolStripMenuItem
+            // 
+            this.vehicleListToolStripMenuItem.Name = "vehicleListToolStripMenuItem";
+            this.vehicleListToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.vehicleListToolStripMenuItem.Text = "Vehicle List";
+            this.vehicleListToolStripMenuItem.Click += new System.EventHandler(this.vehicleListToolStripMenuItem_Click);
+            // 
+            // messageGroupTestToolStripMenuItem
+            // 
+            this.messageGroupTestToolStripMenuItem.Name = "messageGroupTestToolStripMenuItem";
+            this.messageGroupTestToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.messageGroupTestToolStripMenuItem.Text = "Signals definitions";
+            this.messageGroupTestToolStripMenuItem.Click += new System.EventHandler(this.messageGroupTestToolStripMenuItem_Click);
+            // 
+            // makeDataFileToolStripMenuItem
+            // 
+            this.makeDataFileToolStripMenuItem.Name = "makeDataFileToolStripMenuItem";
+            this.makeDataFileToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.makeDataFileToolStripMenuItem.Text = "Empty2";
+            this.makeDataFileToolStripMenuItem.Click += new System.EventHandler(this.makeDataFileToolStripMenuItem_Click);
+            // 
+            // addMessagesToFileToolStripMenuItem
+            // 
+            this.addMessagesToFileToolStripMenuItem.Name = "addMessagesToFileToolStripMenuItem";
+            this.addMessagesToFileToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.addMessagesToFileToolStripMenuItem.Text = "AddMessages to File";
+            this.addMessagesToFileToolStripMenuItem.Click += new System.EventHandler(this.addMessagesToFileToolStripMenuItem_Click);
+            // 
+            // testCombineRawFileToolStripMenuItem
+            // 
+            this.testCombineRawFileToolStripMenuItem.Name = "testCombineRawFileToolStripMenuItem";
+            this.testCombineRawFileToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.testCombineRawFileToolStripMenuItem.Text = "Test Combine Raw File";
+            this.testCombineRawFileToolStripMenuItem.Click += new System.EventHandler(this.testCombineRawFileToolStripMenuItem_Click);
+            // 
             // editMenu
             // 
             this.editMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -322,61 +393,6 @@ namespace test
             this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.statusBarToolStripMenuItem.Text = "&Status Bar";
             this.statusBarToolStripMenuItem.Click += new System.EventHandler(this.StatusBarToolStripMenuItem_Click);
-            // 
-            // toolsMenu
-            // 
-            this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.optionsToolStripMenuItem,
-            this.dataLoggingParametersToolStripMenuItem,
-            this.rawDataFileTestToolStripMenuItem,
-            this.vehicleListToolStripMenuItem,
-            this.messageGroupTestToolStripMenuItem,
-            this.makeDataFileToolStripMenuItem,
-            this.addMessagesToFileToolStripMenuItem});
-            this.toolsMenu.Name = "toolsMenu";
-            this.toolsMenu.Size = new System.Drawing.Size(46, 20);
-            this.toolsMenu.Text = "&Tools";
-            // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.optionsToolStripMenuItem.Text = "&Options";
-            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
-            // 
-            // dataLoggingParametersToolStripMenuItem
-            // 
-            this.dataLoggingParametersToolStripMenuItem.Name = "dataLoggingParametersToolStripMenuItem";
-            this.dataLoggingParametersToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.dataLoggingParametersToolStripMenuItem.Text = "Data Logging Parameters";
-            // 
-            // rawDataFileTestToolStripMenuItem
-            // 
-            this.rawDataFileTestToolStripMenuItem.Name = "rawDataFileTestToolStripMenuItem";
-            this.rawDataFileTestToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.rawDataFileTestToolStripMenuItem.Text = "Raw Data File Test";
-            this.rawDataFileTestToolStripMenuItem.Click += new System.EventHandler(this.rawDataFileTestToolStripMenuItem_Click);
-            // 
-            // vehicleListToolStripMenuItem
-            // 
-            this.vehicleListToolStripMenuItem.Name = "vehicleListToolStripMenuItem";
-            this.vehicleListToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.vehicleListToolStripMenuItem.Text = "Vehicle List";
-            this.vehicleListToolStripMenuItem.Click += new System.EventHandler(this.vehicleListToolStripMenuItem_Click);
-            // 
-            // messageGroupTestToolStripMenuItem
-            // 
-            this.messageGroupTestToolStripMenuItem.Name = "messageGroupTestToolStripMenuItem";
-            this.messageGroupTestToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.messageGroupTestToolStripMenuItem.Text = "Message Group Test";
-            this.messageGroupTestToolStripMenuItem.Click += new System.EventHandler(this.messageGroupTestToolStripMenuItem_Click);
-            // 
-            // makeDataFileToolStripMenuItem
-            // 
-            this.makeDataFileToolStripMenuItem.Name = "makeDataFileToolStripMenuItem";
-            this.makeDataFileToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.makeDataFileToolStripMenuItem.Text = "Make Data File";
-            this.makeDataFileToolStripMenuItem.Click += new System.EventHandler(this.makeDataFileToolStripMenuItem_Click);
             // 
             // windowsMenu
             // 
@@ -589,13 +605,6 @@ namespace test
             this.OF.FileName = "openFileDialog1";
             this.OF.Filter = "Text Files|*.csv|All Files|*.*";
             // 
-            // addMessagesToFileToolStripMenuItem
-            // 
-            this.addMessagesToFileToolStripMenuItem.Name = "addMessagesToFileToolStripMenuItem";
-            this.addMessagesToFileToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.addMessagesToFileToolStripMenuItem.Text = "AddMessages to File";
-            this.addMessagesToFileToolStripMenuItem.Click += new System.EventHandler(this.addMessagesToFileToolStripMenuItem_Click);
-            // 
             // TestingParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -683,6 +692,7 @@ namespace test
         private System.Windows.Forms.ToolStripMenuItem makeDataFileToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog OF;
         private System.Windows.Forms.ToolStripMenuItem addMessagesToFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testCombineRawFileToolStripMenuItem;
     }
 }
 

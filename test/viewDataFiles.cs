@@ -16,5 +16,10 @@ namespace test
         {
             InitializeComponent();
         }
+
+        private void viewDataFiles_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

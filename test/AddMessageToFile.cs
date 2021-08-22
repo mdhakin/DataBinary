@@ -58,30 +58,9 @@ namespace test
                     dg.DataSource = mainTable;
 
                 }
+
             }
-            //else if (state == AppState.newFile)
-            //{
-            //    state = AppState.adding;
-            //    comboBox1.Items.Clear();
-            //    comboBox1.Items.Add("150");
-
-            //    for (int i = 0; i < mainTable.Rows.Count; i++)
-            //    {
-            //        comboBox1.Items.Add(mainTable.Rows[i].Field<UInt32>(0));
-            //        if (mainTable.Rows.Count > 1)
-            //        {
-            //            comboBox1.SelectedIndex = comboBox1.Items.Count;
-            //        }else
-            //        {
-                        
-            //        }
-                    
-
-            //        dg.DataSource = null;
-            //        dg.DataSource = mainTable;
-
-            //    }
-            //}
+           
         }
 
         
@@ -92,9 +71,14 @@ namespace test
             {
                 FileConnected?.Invoke(this, EventArgs.Empty);
                 
-
+                
                 loadFile(sPath,ref mainTable);
                 state = AppState.loaded;
+                dg.DataSource = mainTable;
+                this.Text = sPath;
+
+
+
             }
         }
 
@@ -162,6 +146,7 @@ namespace test
         /// <returns>If this returns anything but 0 there was an error.</returns>
         private int loadFile(string sFileName, ref DataTable ddt)
         {
+            comboBox1.Items.Clear();
             FileStream fs = new FileStream(sFileName, FileMode.Open, FileAccess.Read);
             BinaryReader reader = new BinaryReader(fs);
             UInt32 m_Count = 0;
@@ -200,6 +185,7 @@ namespace test
                     m_msgtime[i] = reader.ReadUInt32();
                     if (currTimeStamp != m_msgtime[i])
                     {
+                        comboBox1.Items.Add(currTimeStamp.ToString());
                         if (currTimeStamp == 0)
                         {
                             DateTime dt = new DateTime();
@@ -284,6 +270,7 @@ namespace test
             button1.Enabled = false;
             mainTable = setupDataTable();
             state = AppState.newFile;
+            
             mainLoop();
         }
 
@@ -345,7 +332,9 @@ namespace test
                 {
                     File.Delete(SF1.FileName);
                 }
-                DataBinary.CreateDataset.WriteDatatableToFile(ref mainTable, SF1.FileName);
+               //DataBinary.CreateDataset.WriteDatatableToFile(ref mainTable, SF1.FileName);
+
+                DataBinary.CombineRawFiles.WriteDatatableToFile(ref mainTable, SF1.FileName);
             }
 
             

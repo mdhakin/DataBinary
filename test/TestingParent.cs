@@ -22,10 +22,8 @@ namespace test
 
         private void ShowNewForm(object sender, EventArgs e)
         {
-            CombineData childForm = new CombineData();
-            childForm.MdiParent = this;
-            //childForm.Text = "Window " + childFormNumber++;
-            childForm.Show();
+            
+            loadEvaluationForm();
         }
 
         private void OpenFile(object sender, EventArgs e)
@@ -140,9 +138,9 @@ namespace test
 
         private void messageGroupTestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Messagegrp childForm = new Messagegrp();
+            SignalsForm childForm = new SignalsForm();
             childForm.MdiParent = this;
-            //childForm.Text = "Window " + childFormNumber++;
+            
             childForm.Show();
         }
 
@@ -157,11 +155,11 @@ namespace test
 
         private void makeDataFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // MakeDataFile
-            MakeDataFile childForm = new MakeDataFile();
-            childForm.MdiParent = this;
-            //childForm.Text = "Window " + childFormNumber++;
-            childForm.Show();
+            //// MakeDataFile
+            //MakeDataFile childForm = new MakeDataFile();
+            //childForm.MdiParent = this;
+            ////childForm.Text = "Window " + childFormNumber++;
+            //childForm.Show();
         }
 
         private void printToolStripButton_Click(object sender, EventArgs e)
@@ -226,6 +224,20 @@ namespace test
             AddMessageToFile childForm = new AddMessageToFile();
             childForm.MdiParent = this;
             childForm.Text = "Add Messages to File";
+            childForm.Show();
+        }
+
+        private void testCombineRawFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadEvaluationForm();
+        }
+
+        private void loadEvaluationForm()
+        {
+            // TextCombineRawFile
+            TextCombineRawFile childForm = new TextCombineRawFile(Application.StartupPath + @"\output\6459\6459.dat", Application.StartupPath + @"\output\6511\6511.dat");
+            childForm.MdiParent = this;
+            childForm.Text = "Test Combine Raw File";
             childForm.Show();
         }
     }

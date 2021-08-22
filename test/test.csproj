@@ -78,12 +78,6 @@
     <Compile Include="AddMessageToFile.Designer.cs">
       <DependentUpon>AddMessageToFile.cs</DependentUpon>
     </Compile>
-    <Compile Include="CombineData.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CombineData.Designer.cs">
-      <DependentUpon>CombineData.cs</DependentUpon>
-    </Compile>
     <Compile Include="DownTimeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,17 +91,11 @@
     <Compile Include="Graph_on_off.Designer.cs">
       <DependentUpon>Graph_on_off.cs</DependentUpon>
     </Compile>
-    <Compile Include="MakeDataFile.cs">
+    <Compile Include="SignalsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MakeDataFile.Designer.cs">
-      <DependentUpon>MakeDataFile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Messagegrp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Messagegrp.Designer.cs">
-      <DependentUpon>Messagegrp.cs</DependentUpon>
+    <Compile Include="SignalsForm.Designer.cs">
+      <DependentUpon>SignalsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SignalsFrm.cs">
       <SubType>Form</SubType>
@@ -130,6 +118,12 @@
     <Compile Include="TestingParent.Designer.cs">
       <DependentUpon>TestingParent.cs</DependentUpon>
     </Compile>
+    <Compile Include="TextCombineRawFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextCombineRawFile.Designer.cs">
+      <DependentUpon>TextCombineRawFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="vehicleList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,20 +139,14 @@
     <EmbeddedResource Include="AddMessageToFile.resx">
       <DependentUpon>AddMessageToFile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CombineData.resx">
-      <DependentUpon>CombineData.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DownTimeForm.resx">
       <DependentUpon>DownTimeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Graph_on_off.resx">
       <DependentUpon>Graph_on_off.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MakeDataFile.resx">
-      <DependentUpon>MakeDataFile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Messagegrp.resx">
-      <DependentUpon>Messagegrp.cs</DependentUpon>
+    <EmbeddedResource Include="SignalsForm.resx">
+      <DependentUpon>SignalsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SignalsFrm.resx">
       <DependentUpon>SignalsFrm.cs</DependentUpon>
@@ -179,8 +167,14 @@
     <EmbeddedResource Include="TestingParent.resx">
       <DependentUpon>TestingParent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TextCombineRawFile.resx">
+      <DependentUpon>TextCombineRawFile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vehicleList.resx">
       <DependentUpon>vehicleList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="viewDataFiles.resx">
+      <DependentUpon>viewDataFiles.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="MCRRS_SIGNALS.ini" />
     <None Include="Properties\Settings.settings">
@@ -210,10 +204,6 @@
     <ProjectReference Include="..\MCRRS_LIST\MCRRS_LIST.csproj">
       <Project>{46e03491-c007-4a37-baa5-444c38d0b3bc}</Project>
       <Name>MCRRS_LIST</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MessageGroup\MessageGroup.csproj">
-      <Project>{E086AC85-D1FC-4357-8A0F-C4AF30EE21D8}</Project>
-      <Name>MessageGroup</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

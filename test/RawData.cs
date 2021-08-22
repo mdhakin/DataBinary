@@ -31,6 +31,7 @@ namespace test
 
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
+            of.InitialDirectory = Application.StartupPath;
             of.ShowDialog();
 
             if (!string.IsNullOrEmpty(of.FileName))

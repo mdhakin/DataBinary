@@ -35,11 +35,12 @@ namespace test
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtTimeStamp = new System.Windows.Forms.TextBox();
-            this.txtdata = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.txtdata = new System.Windows.Forms.TextBox();
+            this.txtTimeStamp = new System.Windows.Forms.TextBox();
             this.SF1 = new System.Windows.Forms.SaveFileDialog();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +62,7 @@ namespace test
             this.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg.Location = new System.Drawing.Point(130, 29);
             this.dg.Name = "dg";
-            this.dg.Size = new System.Drawing.Size(1016, 285);
+            this.dg.Size = new System.Drawing.Size(1222, 285);
             this.dg.TabIndex = 1;
             // 
             // OF
@@ -70,7 +71,7 @@ namespace test
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(3, 0);
+            this.button1.Location = new System.Drawing.Point(3, 1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(44, 23);
             this.button1.TabIndex = 2;
@@ -80,7 +81,7 @@ namespace test
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(53, 0);
+            this.button2.Location = new System.Drawing.Point(53, 1);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(44, 23);
             this.button2.TabIndex = 3;
@@ -99,21 +100,15 @@ namespace test
             this.panel1.Size = new System.Drawing.Size(368, 113);
             this.panel1.TabIndex = 4;
             // 
-            // txtTimeStamp
+            // button4
             // 
-            this.txtTimeStamp.Location = new System.Drawing.Point(27, 28);
-            this.txtTimeStamp.Name = "txtTimeStamp";
-            this.txtTimeStamp.Size = new System.Drawing.Size(172, 20);
-            this.txtTimeStamp.TabIndex = 0;
-            this.txtTimeStamp.Text = "1500000000";
-            // 
-            // txtdata
-            // 
-            this.txtdata.Location = new System.Drawing.Point(218, 28);
-            this.txtdata.Name = "txtdata";
-            this.txtdata.Size = new System.Drawing.Size(124, 20);
-            this.txtdata.TabIndex = 1;
-            this.txtdata.Text = "254";
+            this.button4.Location = new System.Drawing.Point(267, 70);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "Save";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -125,21 +120,39 @@ namespace test
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // txtdata
             // 
-            this.button4.Location = new System.Drawing.Point(267, 70);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Save";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.txtdata.Location = new System.Drawing.Point(218, 28);
+            this.txtdata.Name = "txtdata";
+            this.txtdata.Size = new System.Drawing.Size(124, 20);
+            this.txtdata.TabIndex = 1;
+            this.txtdata.Text = "254";
+            // 
+            // txtTimeStamp
+            // 
+            this.txtTimeStamp.Location = new System.Drawing.Point(27, 28);
+            this.txtTimeStamp.Name = "txtTimeStamp";
+            this.txtTimeStamp.Size = new System.Drawing.Size(172, 20);
+            this.txtTimeStamp.TabIndex = 0;
+            this.txtTimeStamp.Text = "1500000000";
+            // 
+            // listBox1
+            // 
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(504, 329);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(848, 225);
+            this.listBox1.TabIndex = 5;
             // 
             // AddMessageToFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1158, 714);
+            this.ClientSize = new System.Drawing.Size(1364, 573);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -169,5 +182,6 @@ namespace test
         private System.Windows.Forms.TextBox txtTimeStamp;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.SaveFileDialog SF1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

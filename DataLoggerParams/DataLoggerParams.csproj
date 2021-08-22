@@ -48,7 +48,7 @@
     <Compile Include="IEightBitSignal.cs" />
     <Compile Include="ISignals.cs" />
     <Compile Include="ISixteenBitSignal.cs" />
-    <Compile Include="Params.cs" />
+    <Compile Include="MessageIDs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Signals.cs" />
     <Compile Include="SixteenBitSignal.cs" />

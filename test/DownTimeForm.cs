@@ -44,7 +44,7 @@ namespace test
 
 
             label2.Text = lab2[0];
-            for (int i = 5; i < loadfile.Length - 5; i++)
+            for (int i = 5; i < loadfile.Length; i++)
             {
                 string[] items = loadfile[i].Split(',');
                 dt.Rows.Add(items);
