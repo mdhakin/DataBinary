@@ -275,8 +275,33 @@ namespace test
                         lastPrimaryIndex++;
                     }
 
+                    // test to see if there are any more in the secondary
+                    for (int j = 0; j < Secondary.RecordCount; j++)
+                    {
+                        if (Secondary.Msgtime[j] > primary.Msgtime[lastPrimaryIndex-1])
+                        {
+                            t[lastnewIndex].ts = Secondary.Msgtime[j];
+                            t[lastnewIndex].msgID = Secondary.Msgid[j];
+                            t[lastnewIndex].f0 = Secondary.F0[j];
+                            t[lastnewIndex].f1 = Secondary.F1[j];
+                            t[lastnewIndex].f2 = Secondary.F2[j];
+                            t[lastnewIndex].f3 = Secondary.F3[j];
+                            t[lastnewIndex].f4 = Secondary.F4[j];
+                            t[lastnewIndex].f5 = Secondary.F5[j];
+                            t[lastnewIndex].f6 = Secondary.F6[j];
+                            t[lastnewIndex].f7 = Secondary.F7[j];
+                            lastnewIndex++;
+                        }
+                    }
+
 
                 }
+
+               // MessageBox.Show(primary.Msgtime[lastPrimaryIndex - 1].ToString()); ;
+
+                
+
+
 
 
 
@@ -286,12 +311,20 @@ namespace test
 
 
             //go to the next gap and start again
-
-            writeOutputFile(t, @"C:\output\5871\5871.dat", lastnewIndex);
-
-
             watch.Stop();
             MessageBox.Show(watch.ElapsedMilliseconds.ToString() + " ms");
+
+            SF1.ShowDialog();
+            if (!string.IsNullOrEmpty(SF1.FileName))
+            {
+                if (File.Exists(SF1.FileName))
+                {
+                    File.Delete(SF1.FileName);
+                }
+                writeOutputFile(t, SF1.FileName, lastnewIndex);
+            }
+
+            
         }
 
  

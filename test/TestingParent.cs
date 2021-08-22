@@ -181,11 +181,12 @@ namespace test
 
         private void printPreviewToolStripButton_Click(object sender, EventArgs e)
         {
-            //MakeDataFile
-            MakeDataFile childForm = new MakeDataFile();
-            childForm.MdiParent = this;
-            //childForm.Text = "Window " + childFormNumber++;
-            childForm.Show();
+            ////MakeDataFile
+            //MakeDataFile childForm = new MakeDataFile();
+            //childForm.MdiParent = this;
+            ////childForm.Text = "Window " + childFormNumber++;
+            //childForm.Show();
+            OpenAddMsgesToFile();
         }
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)

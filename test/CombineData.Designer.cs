@@ -43,6 +43,7 @@ namespace test
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.listBox6 = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.SF1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // listBox1
@@ -174,6 +175,7 @@ namespace test
             this.button2.TabIndex = 16;
             this.button2.Text = "Create Data";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // CombineData
@@ -217,5 +219,6 @@ namespace test
         private System.Windows.Forms.ListBox listBox5;
         private System.Windows.Forms.ListBox listBox6;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.SaveFileDialog SF1;
     }
 }
