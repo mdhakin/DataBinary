@@ -233,7 +233,7 @@ namespace DataBinary
             List<string> gaps3 = loaddats(ref primary, gapWidth);
 
             // What is the max size the new dataset can be?
-            UInt32 combinedTotal = (UInt32)(primary.RecordCount + Secondary.RecordCount);
+            UInt32 combinedTotal = (UInt32)(primary.RecordCount + Secondary.RecordCount + 22);
 
             // msg to hold the combined dataset
             msg[] t = new msg[combinedTotal];
@@ -260,7 +260,7 @@ namespace DataBinary
             // Keep track of the last index used
             UInt32 lastPrimaryIndex = 0;
             UInt32 lastnewIndex = 0;
-
+            UInt32 lastSecondaryIndex = 0;
             // Main algorithm.
             for (int i = 0; i < gapstarts.Length; i++)
             {
@@ -283,7 +283,7 @@ namespace DataBinary
 
                 // find items in the secondary that fall in the current gap 
                 // add those to the file
-                for (int j = 0; j < Secondary.RecordCount; j++)
+                for (UInt32 j = lastSecondaryIndex; j < Secondary.RecordCount; j++)
                 {
                     if (Secondary.Msgtime[j] > gapstarts[i] && Secondary.Msgtime[j] < gapends[i])
                     {
@@ -298,6 +298,7 @@ namespace DataBinary
                         t[lastnewIndex].f6 = Secondary.F6[j];
                         t[lastnewIndex].f7 = Secondary.F7[j];
                         lastnewIndex++;
+                        lastSecondaryIndex = j;
 
                     }
                 }
@@ -327,7 +328,7 @@ namespace DataBinary
                     }
 
                     // test to see if there are any more in the secondary
-                    for (int j = 0; j < Secondary.RecordCount; j++)
+                    for (UInt32 j = lastSecondaryIndex; j < Secondary.RecordCount; j++)
                     {
                         if (Secondary.Msgtime[j] > primary.Msgtime[lastPrimaryIndex - 1])
                         {
@@ -342,6 +343,7 @@ namespace DataBinary
                             t[lastnewIndex].f6 = Secondary.F6[j];
                             t[lastnewIndex].f7 = Secondary.F7[j];
                             lastnewIndex++;
+                            lastSecondaryIndex = j;
                         }
                     }
 
