@@ -28,6 +28,11 @@ namespace DataBinary
             public byte f7;
         }
 
+        public struct LinearMsg
+        {
+            public msg[] messageBlock;
+        }
+
 
         /// <summary>
         /// This function will determine the list of gaps defined by the timeCutoff parameter
@@ -172,6 +177,102 @@ namespace DataBinary
 
         }
 
+        public LinearMsg[] HashCombine(DataBinary.RawFile raw1, DataBinary.RawFile raw2)
+        {
+            DataBinary.RawFile primary;
+            DataBinary.RawFile Secondary;
+
+            primary = raw1;
+            Secondary = raw2;
+
+            UInt32 firstDate = 0;
+
+            if (Convert.ToUInt32(primary.Msgtime[0]) > Convert.ToUInt32(Secondary.Msgtime[0]))
+            {
+                firstDate = Convert.ToUInt32(Secondary.Msgtime[0]);
+            }else
+            {
+                firstDate = Convert.ToUInt32(primary.Msgtime[0]);
+            }
+
+            UInt32 LastDate = 0;
+
+            if (Convert.ToUInt32(primary.Msgtime[primary.RecordCount -1]) > Convert.ToUInt32(Secondary.Msgtime[Secondary.RecordCount -1]))
+            {
+                LastDate = Convert.ToUInt32(primary.Msgtime[primary.RecordCount -1]);
+            }else
+            {
+                LastDate = Convert.ToUInt32(Secondary.Msgtime[Secondary.RecordCount -1]);
+            }
+
+            UInt32 dateDiff = LastDate - firstDate;
+
+            LinearMsg[] msg = new LinearMsg[dateDiff];
+            
+            for (UInt32 i = 0; i < dateDiff; i++)
+            {
+                msg[i].messageBlock = new msg[11];
+                
+                
+            }
+
+            UInt32 ii = (UInt32)msg.Length;
+
+            for (UInt32 i = 0; i < primary.RecordCount; i++)
+            {
+                for (int j = 0; j < 11; j++)
+                {
+                    UInt32 ff = (UInt32)primary.RecordCount;
+                    UInt32 dd = (UInt32)msg.Length;
+                    UInt32 gg = (UInt32)primary.Msgtime[i];
+
+                    UInt32 arraynum = primary.Msgtime[i] - firstDate;
+
+                    msg[primary.Msgtime[i] - firstDate].messageBlock[j].ts = primary.Msgtime[i];
+                    msg[primary.Msgtime[i] - firstDate].messageBlock[j].msgID = primary.Msgid[i];
+                    msg[primary.Msgtime[i] - firstDate].messageBlock[j].f0 = primary.F0[i];
+                    msg[primary.Msgtime[i] - firstDate].messageBlock[j].f1 = primary.F1[i];
+                    msg[primary.Msgtime[i] - firstDate].messageBlock[j].f2 = primary.F2[i];
+                    msg[primary.Msgtime[i] - firstDate].messageBlock[j].f3 = primary.F3[i];
+                    msg[primary.Msgtime[i] - firstDate].messageBlock[j].f4 = primary.F4[i];
+                    msg[primary.Msgtime[i] - firstDate].messageBlock[j].f5 = primary.F5[i];
+                    msg[primary.Msgtime[i] - firstDate].messageBlock[j].f6 = primary.F6[i];
+                    msg[primary.Msgtime[i] - firstDate].messageBlock[j].f7 = primary.F7[i];
+                    i++;
+                }
+            }
+
+            for (UInt32 i  = 0; i  < Secondary.RecordCount-11; i ++)
+            {
+                for (int j = 0; j < 11; j++)
+                {
+                    UInt32 arraynum = Secondary.Msgtime[i] - firstDate;
+                    msg[Secondary.Msgtime[i] - firstDate].messageBlock[j].ts = Secondary.Msgtime[i];
+                    msg[Secondary.Msgtime[i] - firstDate].messageBlock[j].msgID = Secondary.Msgid[i];
+                    msg[Secondary.Msgtime[i] - firstDate].messageBlock[j].f0 = Secondary.F0[i];
+                    msg[Secondary.Msgtime[i] - firstDate].messageBlock[j].f1 = Secondary.F1[i];
+                    msg[Secondary.Msgtime[i] - firstDate].messageBlock[j].f2 = Secondary.F2[i];
+                    msg[Secondary.Msgtime[i] - firstDate].messageBlock[j].f3 = Secondary.F3[i];
+                    msg[Secondary.Msgtime[i] - firstDate].messageBlock[j].f4 = Secondary.F4[i];
+                    msg[Secondary.Msgtime[i] - firstDate].messageBlock[j].f5 = Secondary.F5[i];
+                    msg[Secondary.Msgtime[i] - firstDate].messageBlock[j].f6 = Secondary.F6[i];
+                    msg[Secondary.Msgtime[i] - firstDate].messageBlock[j].f7 = Secondary.F7[i];
+                    i++;
+                }
+            }
+            UInt32 recorct = 0;
+            for (UInt32 i = 0; i < dateDiff; i++)
+            {
+                if (msg[i].messageBlock[0].ts > 1)
+                {
+                    recorct++;
+                }
+            }
+
+
+            return msg;
+        }
+
         public DataTable Combine_returnDataTable(DataBinary.RawFile raw1, DataBinary.RawFile raw2, UInt32 gapWidth)
         {
             DataTable ddt = new DataTable();
@@ -210,7 +311,7 @@ namespace DataBinary
             return ddt;
         }
 
-
+        
         public msg[] Combine(DataBinary.RawFile raw1, DataBinary.RawFile raw2, UInt32 gapWidth)
         {
             DataBinary.RawFile primary;
