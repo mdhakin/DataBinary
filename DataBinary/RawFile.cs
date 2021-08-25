@@ -156,6 +156,80 @@ namespace DataBinary
         }
 
         /// <summary>
+        /// This Will get a set of messages from the parents data and return a rawfile object with only the message ID asked for with msg.
+        /// </summary>
+        /// <param name="msg">The Can Message id of the data being asked for</param>
+        /// <param name="deletefile">This method creates a temp file. You may want to keep it for analysis</param>
+        /// <returns></returns>
+        public RawFile getMsgSet(UInt16 msg, bool deletefile)
+        {
+
+
+            // count how many records are extracted
+            long ct = 0;
+
+            // Get the number of times the msg appears in this file.
+            for (int i = 0; i < this.m_Count; i++)
+            {
+                if (this.m_msgid[i] == msg)
+                {
+                    ct++;
+                }
+            }
+
+            // If records exist
+            if (ct > 0)
+            {
+                // Prep output
+                if (File.Exists(@"tempfs.dat"))
+                {
+                    File.Delete(@"tempfs.dat");
+                }
+
+                // Prep writer object
+                FileStream fs = new FileStream(@"tempfs.dat", FileMode.Create);
+                BinaryWriter writer = new BinaryWriter(fs);
+
+                for (int i = 0; i < this.m_Count; i++)
+                {
+                    if (this.m_msgid[i] == msg)
+                    {
+                        writer.Write(this.m_msgtime[i]);
+                        writer.Write(this.m_msgid[i]);
+                        writer.Write(this.m_f0[i]);
+                        writer.Write(this.m_f1[i]);
+                        writer.Write(this.m_f2[i]);
+                        writer.Write(this.m_f3[i]);
+                        writer.Write(this.m_f4[i]);
+                        writer.Write(this.m_f5[i]);
+                        writer.Write(this.m_f6[i]);
+                        writer.Write(this.m_f7[i]);
+                    }
+                }
+
+                writer.Close();
+                fs.Close();
+
+                // Object to be returned 
+                RawFile rf = new RawFile(@"tempfs.dat");
+
+                // Clean up
+                if (deletefile && File.Exists(@"tempfs.dat"))
+                {
+                    File.Delete(@"tempfs.dat");
+                }
+
+                return rf;
+            }
+            else
+            {
+                this.m_error = "Error extracting the data";
+                return null;
+            }
+        }
+
+
+        /// <summary>
         /// This is an internal function used to load the inital file into the class.
         /// </summary>
         /// <returns>If this returns anything but 0 there was an error.</returns>

@@ -11,29 +11,37 @@ namespace ConsoleTestApp
     {
         static void Main(string[] args)
         {
-            string sPath1 = @"C:\Users\mhakin.TRIDOMAIN\OneDrive\code\csharp\DataBinary\test\bin\Debug\output\6459\6459.dat";
-            string sPath2 = @"C:\Users\mhakin.TRIDOMAIN\OneDrive\code\csharp\DataBinary\test\bin\Debug\output\6511\6511.dat";
-            DataBinary.CombineRawFiles.LinearMsg[] output;
+            //Console.WriteLine(args[0]);
+            string sPath1 = args[0];
+            string sPath2 = @"C:\output\5590\5590.dat";
+          
             if (File.Exists(sPath1) && File.Exists(sPath2))
             {
-                DataBinary.RawFile raw1 = new DataBinary.RawFile(sPath1);
-                DataBinary.RawFile raw2 = new DataBinary.RawFile(sPath2);
+               
 
-                DataBinary.CombineRawFiles combine = new DataBinary.CombineRawFiles();
+                int[] ids = new int[2];
+                ids[0] = Convert.ToInt32(args[1]);
+                ids[1] = Convert.ToInt32(args[2]);
 
-                output = combine.HashCombine(raw1, raw2);
-                Console.WriteLine("Ouputfile memory: " + (output.Length * 154).ToString() + " bytes");
-                Console.WriteLine("Inputfile one memory: " + (raw1.RecordCount * 14).ToString() + " bytes for " + raw1.RecordCount.ToString() + " Records");
-                Console.WriteLine("Inputfile two memory: " + (raw2.RecordCount * 14).ToString() + " bytes for " + raw2.RecordCount.ToString() + " Records");
+                Console.WriteLine("ID 1 " + ids[0].ToString());
+                Console.WriteLine("ID 2 " + ids[1].ToString());
 
-                for (UInt32 i = 0; i < output.Length; i++)
+                Compare_dataset.Compare_dataset data = new Compare_dataset.Compare_dataset(sPath1, ids);
+
+                
+
+                List<CAN_Signals.Signal> sigs = data.getIDs();
+                for (int i = 0; i < sigs.Count; i++)
                 {
-                    if (output[i].messageBlock[0].ts > 0)
-                    {
-                        Console.WriteLine(output[i].messageBlock[0].ts.ToString());
-                    }
-                    
+                    Console.WriteLine(i.ToString() + " " + sigs[i].Name);
                 }
+
+                string[] result = data.getResult();
+                for (int i = 0; i < 10; i++)
+                {
+                    Console.WriteLine(result[i]);
+                }
+                
             }
 
             

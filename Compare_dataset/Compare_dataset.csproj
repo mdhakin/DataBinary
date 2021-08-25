@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FE24A829-41F4-4A75-86B9-D61B01F39BEA}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleTestApp</RootNamespace>
-    <AssemblyName>ConsoleTestApp</AssemblyName>
+    <ProjectGuid>{F80F40F1-C1A8-4AE1-BB23-52B62F6AC46E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Compare_dataset</RootNamespace>
+    <AssemblyName>Compare_dataset</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,9 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CAN_Signals, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="CAN_Signals">
       <HintPath>..\..\Data\CAN_Signals\bin\Debug\netstandard2.0\CAN_Signals.dll</HintPath>
+    </Reference>
+    <Reference Include="ConvertToBinaryString, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ConvertToBinaryString.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,30 +46,18 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnixTime">
+      <HintPath>..\..\Data\UnixTime\bin\Debug\netstandard2.1\UnixTime.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Compare_dataset.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Compare_dataset\Compare_dataset.csproj">
-      <Project>{f80f40f1-c1a8-4ae1-bb23-52b62f6ac46e}</Project>
-      <Name>Compare_dataset</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DataBinary\DataBinary.csproj">
       <Project>{84e32c17-f638-4f7f-b1bb-1f8a3c151672}</Project>
       <Name>DataBinary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataLoggerParams\DataLoggerParams.csproj">
-      <Project>{46b20a76-201c-4841-b412-98e90c5b932f}</Project>
-      <Name>DataLoggerParams</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MCRRS_LIST\MCRRS_LIST.csproj">
-      <Project>{46e03491-c007-4a37-baa5-444c38d0b3bc}</Project>
-      <Name>MCRRS_LIST</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
