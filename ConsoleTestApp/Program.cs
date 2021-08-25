@@ -12,6 +12,7 @@ namespace ConsoleTestApp
         static void Main(string[] args)
         {
             //Console.WriteLine(args[0]);
+            int loops = Convert.ToInt32(args[3]);
             string sPath1 = args[0];
             string sPath2 = @"C:\output\5590\5590.dat";
           
@@ -37,14 +38,12 @@ namespace ConsoleTestApp
                 }
 
                 string[] result = data.getResult();
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < loops; i++)
                 {
                     Console.WriteLine(result[i]);
                 }
                 
             }
-
-            
 
             Console.ReadLine();
         }
