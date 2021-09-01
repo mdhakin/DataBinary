@@ -24,8 +24,8 @@ namespace ConsoleTestApp
                 ids[0] = Convert.ToInt32(args[1]);
                 ids[1] = Convert.ToInt32(args[2]);
 
-                Console.WriteLine("ID 1 " + ids[0].ToString());
-                Console.WriteLine("ID 2 " + ids[1].ToString());
+                //Console.WriteLine("ID 1 " + ids[0].ToString());
+                //Console.WriteLine("ID 2 " + ids[1].ToString());
 
                 Compare_dataset.Compare_dataset data = new Compare_dataset.Compare_dataset(sPath1, ids);
 
