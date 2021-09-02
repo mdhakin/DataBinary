@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "getListOfreadings", "getLis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCRRS_Simulator", "MCRRS_Simulator\MCRRS_Simulator.csproj", "{2B560381-751D-431F-AD01-C3435E3CF796}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "getGaps", "getGaps\getGaps.csproj", "{AE4F02FE-28D4-4DAB-8403-59A650A3D229}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{2B560381-751D-431F-AD01-C3435E3CF796}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B560381-751D-431F-AD01-C3435E3CF796}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B560381-751D-431F-AD01-C3435E3CF796}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE4F02FE-28D4-4DAB-8403-59A650A3D229}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE4F02FE-28D4-4DAB-8403-59A650A3D229}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE4F02FE-28D4-4DAB-8403-59A650A3D229}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE4F02FE-28D4-4DAB-8403-59A650A3D229}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

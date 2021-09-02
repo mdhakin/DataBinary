@@ -457,5 +457,73 @@ namespace DataBinary
 
             return output;
         }
+
+        /// <summary>
+        /// This function will determine the list of gaps defined by the timeCutoff parameter
+        /// </summary>
+        /// <param name="raw">The Raw data file Dataset</param>
+        /// <param name="timeCutoff">The minimum time to use to determne gaps in the datafile</param>
+        /// <returns>Returns a List of type string</returns>
+        public static List<string> loaddatsStatic(ref DataBinary.RawFile raw, UInt32 timeCutoff)
+        {
+            // split the filename path to get the software ID
+            string[] fn = raw.Filename.Split('\\');
+
+            // Create the output file name
+            string outname = "VehicleID- " + fn[fn.Length - 1].Substring(0, 4) + ".csv";
+
+            // Array to hold the gap data
+            string[] gaps = new string[raw.RecordCount];
+            List<string> gaps2 = new List<string>();
+
+            MCRRS_LIST.mcrrs mccris = new MCRRS_LIST.mcrrs();
+            string usn = mccris.getUSNfromID(fn[fn.Length - 1].Substring(0, 4));
+            string headder1 = "USN Number: " + usn + ", Data File Start Date:" + raw.FileStartDate.ToString() + ", Data File End Date: " + raw.FileEnddate.ToString() + ",,,,,";
+            string headder2 = "***************************************************************************************************************";
+            string infoheader = "Time Cutoff=" + timeCutoff.ToString() + " In seconds, Downtime Anaysis File Creation Date: " + DateTime.Now.ToString() + ",,,,,,";
+            string headder = "SECONDS, START OF IDLE, UNIX TS,END OF IDLE,UNIX TS,MINUTES,HOURS,DAYS";
+            string titleHeader = "MCRRS Downtime Report.";
+
+            gaps2.Add(titleHeader);
+            gaps2.Add(headder1);
+            gaps2.Add(infoheader);
+            gaps2.Add(headder2);
+            gaps2.Add(headder);
+            for (int i = 0; i < raw.RecordCount - 1; i++)
+            {
+                UInt32 t1 = raw.Msgtime[i];
+                UInt32 t2 = raw.Msgtime[i + 1];
+
+                UInt32 diff = t2 - t1;
+
+                if (diff == 0)
+                {
+                    gaps[i] = "-";
+                }
+                else if (diff > timeCutoff)
+                {
+                    double mins = diff / 60;
+                    double hours = mins / 60;
+                    double days = hours / 24;
+
+                    string begindate = DataBinary.UT.UnixTimeStampToDateTime(Convert.ToDouble(t1)).ToString();
+                    string enddate = DataBinary.UT.UnixTimeStampToDateTime(Convert.ToDouble(t2)).ToString();
+
+                    if (diff >= timeCutoff && t2 > t1)
+                    {
+
+                        gaps2.Add(diff.ToString() + "," + begindate + "," + t1.ToString() + "," + enddate + "," + t2.ToString() + "," + ((int)(mins)).ToString() + "," + Math.Round(hours, 1).ToString() + "," + ((decimal)Math.Round(days, 2)).ToString());
+                    }
+
+                }
+                else
+                {
+                    gaps[i] = "-";
+                }
+            }
+
+            return gaps2;
+
+        }
     }
 }
