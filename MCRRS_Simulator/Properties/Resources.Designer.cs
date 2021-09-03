@@ -63,6 +63,16 @@ namespace MCRRS_Simulator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BCKGRD_INDICATORS {
+            get {
+                object obj = ResourceManager.GetObject("BCKGRD_INDICATORS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FWD_INDICATOR {
             get {
                 object obj = ResourceManager.GetObject("FWD_INDICATOR", resourceCulture);
@@ -76,6 +86,26 @@ namespace MCRRS_Simulator.Properties {
         internal static System.Drawing.Bitmap MCRRS_MAIN {
             get {
                 object obj = ResourceManager.GetObject("MCRRS_MAIN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NEUTRAL_INDICATOR {
+            get {
+                object obj = ResourceManager.GetObject("NEUTRAL_INDICATOR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap REV_INDICATOR {
+            get {
+                object obj = ResourceManager.GetObject("REV_INDICATOR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

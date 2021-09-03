@@ -103,5 +103,14 @@
   <ItemGroup>
     <None Include="bin\Debug\dp600images\FWD_INDICATOR.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\dp600images\REV_INDICATOR.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\dp600images\NEUTRAL_INDICATOR.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\dp600images\BCKGRD_INDICATORS.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
