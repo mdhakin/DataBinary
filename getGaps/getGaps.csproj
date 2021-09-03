@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>RazorArt_Ipack Configuration Settings.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CAN_Signals">
       <HintPath>..\..\Data\CAN_Signals\bin\Debug\netstandard2.0\CAN_Signals.dll</HintPath>
@@ -65,6 +68,10 @@
       <Project>{46e03491-c007-4a37-baa5-444c38d0b3bc}</Project>
       <Name>MCRRS_LIST</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Doublet Icon 79.ico" />
+    <Content Include="RazorArt_Ipack Configuration Settings.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
