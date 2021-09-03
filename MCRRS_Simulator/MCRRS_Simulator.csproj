@@ -112,5 +112,17 @@
   <ItemGroup>
     <None Include="bin\Debug\dp600images\BCKGRD_INDICATORS.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\dp600images\HIGH_GEAR.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\dp600images\VACUUM_INDICATOR.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\dp600images\DECK_FLOAT_INDICATOR.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\dp600images\DECK_LOCK_INDICATOR.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -73,9 +73,39 @@ namespace MCRRS_Simulator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DECK_FLOAT_INDICATOR {
+            get {
+                object obj = ResourceManager.GetObject("DECK_FLOAT_INDICATOR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DECK_LOCK_INDICATOR {
+            get {
+                object obj = ResourceManager.GetObject("DECK_LOCK_INDICATOR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FWD_INDICATOR {
             get {
                 object obj = ResourceManager.GetObject("FWD_INDICATOR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HIGH_GEAR {
+            get {
+                object obj = ResourceManager.GetObject("HIGH_GEAR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +136,16 @@ namespace MCRRS_Simulator.Properties {
         internal static System.Drawing.Bitmap REV_INDICATOR {
             get {
                 object obj = ResourceManager.GetObject("REV_INDICATOR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VACUUM_INDICATOR {
+            get {
+                object obj = ResourceManager.GetObject("VACUUM_INDICATOR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -21,10 +21,19 @@ namespace MCRRS_Simulator
         int currenttimestampIndx;
         string[] allreadings;
 
+        string[] aDeck_float;
+        string[] aDeck_Lock;
+
+        string[] aVac_rpm;
+        string sVacuumRpm = "Blower RPM: ";
+
+        string[] aEnginerpm; // 0
+        string sEngineRpmStr = "Engine Rpm: ";
+
         string[] open_loop_psi; //3
 
         string[] hp_water_psi;
-
+        string sHP_Water_PSIStr = "HP water psi: ";
         string[] fwd_on1; // 43
         string fwd_on_str = "Vehicle in forward";
 
@@ -32,16 +41,34 @@ namespace MCRRS_Simulator
         string neutral_on_str = "Vehicle in neutral";
 
         string[] rev_on1;
-        
 
-        string filePath = @"C:\output\5590\5590.dat";
-        //DataBinary.RawFile raw;
+
+        string filePath = "";
+        
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            string[] args = Environment.GetCommandLineArgs();
+            
+            if(args.Length > 1)
+            {
+                string nargs = args[0];
+                if (File.Exists(args[0]))
+                {
+                    filePath = args[0];
+                }else
+                {
+                    filePath = "5497.dat";
+                }
+            }else
+            {
+                filePath = "5497.dat";
+            }
+            comboBox1.SelectedIndex = 5;
+            this.Text = filePath;
             // raw = new DataBinary.RawFile(filePath);
-
+            position();
             setup();
+            
         }
 
         private void setup()
@@ -51,7 +78,11 @@ namespace MCRRS_Simulator
             rev_on1 = getReading(44);
             hp_water_psi = getReading(6);
             open_loop_psi = getReading(3);
-            currenttimestampIndx = 10000;
+            aEnginerpm = getReading(0);
+            aVac_rpm = getReading(12);
+            aDeck_float = getReading(81);
+            aDeck_Lock = getReading(82);
+            currenttimestampIndx = 0;
         }
 
         private string[] getReading(int indx)
@@ -64,29 +95,42 @@ namespace MCRRS_Simulator
             return output;
         }
 
-        private void makeReadingsList()
+        private void position()
         {
-            int[] ids = new int[95];
-            for (int i = 0; i < ids.Length; i++)
-            {
-                if (i == 13 || i == 15)
-                {
-                    i = 1;
-                }
-                else
-                {
-                    ids[i] = i;
-                }
-            }
-            Compare_dataset.Compare_dataset data = new Compare_dataset.Compare_dataset(filePath, ids);
-            allreadings = data.getResult();
+            console.Left = 143;
+            console.Top = 310;
 
+            fwd_on.Left = 204;
+            fwd_on.Top = 335;
+
+            neutral_on.Left = 259;
+            neutral_on.Top = fwd_on.Top;
+
+            rev_on.Left = 314;
+            rev_on.Top = fwd_on.Top;
+
+            lblVac_console_on.Left = fwd_on.Left;
+            lblVac_console_on.Top = 315;
+
+            pDeck_Float.Left = 369;
+            pDeck_Float.Top = fwd_on.Top;
+
+            pDeck_Lock.Top = lblVac_console_on.Top;
+            pDeck_Lock.Left = pDeck_Float.Left;
         }
+
 
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (comboBox1.SelectedIndex > 0)
+            {
+                string sInterval = comboBox1.Text;
+                int iInterval = Convert.ToInt32(sInterval);
+                timer1.Interval = iInterval;
+            }
             
+
             if (currenttimestampIndx == fwd_on1.Length)
             {
                 currenttimestampIndx = 0;
@@ -95,7 +139,7 @@ namespace MCRRS_Simulator
             if (fwd_Parts_on[1] == "1")
             {
                 fwd_on.Visible = true;
-            }else
+            } else
             {
                 fwd_on.Visible = false;
             }
@@ -111,6 +155,17 @@ namespace MCRRS_Simulator
                 neutral_on.Visible = false;
             }
 
+            string[] deck_float_parts = aDeck_float[currenttimestampIndx].Split('|');
+            if (deck_float_parts[1] == "1")
+            {
+                pDeck_Float.Visible = true;
+            }
+            else
+            {
+
+                pDeck_Float.Visible = false;
+            }
+
             string[] rev_Parts_on = rev_on1[currenttimestampIndx].Split('|');
             if (rev_Parts_on[1] == "1")
             {
@@ -122,6 +177,17 @@ namespace MCRRS_Simulator
                 rev_on.Visible = false;
             }
 
+            string[] Deck_lock_parts = aDeck_Lock[currenttimestampIndx].Split('|');
+            if (Deck_lock_parts[1] == "1")
+            {
+                pDeck_Lock.Visible = true;
+            }
+            else
+            {
+
+                pDeck_Lock.Visible = false;
+            }
+
 
             string[] hp_water_parts = open_loop_psi[currenttimestampIndx].Split('|');
             lblOpenLoop.Text = "Open Loop Pressure: " + hp_water_parts[1];
@@ -129,9 +195,25 @@ namespace MCRRS_Simulator
 
 
             string[] hp_water_psi_parts = hp_water_psi[currenttimestampIndx].Split('|');
-            label2.Text = "HP water psi: " + hp_water_psi_parts[1];
+            label2.Text = sHP_Water_PSIStr + hp_water_psi_parts[1];
+
+            string[] Engine_Rpm_parts = aEnginerpm[currenttimestampIndx].Split('|');
+            lblEngingRpm.Text = sEngineRpmStr + Engine_Rpm_parts[1] + " RPM";
+
+            string[] Vac_RPM_parts = aVac_rpm[currenttimestampIndx].Split('|');
+            lblVacRPM.Text = sVacuumRpm + Vac_RPM_parts[1] + " RPM";
+
+            lblChangeIndex.Text = "Index " + currenttimestampIndx + " of " + aVac_rpm.Length.ToString(); ;
             currenttimestampIndx++;
 
+        }
+
+        private void btnChangeIndex_Click(object sender, EventArgs e)
+        {
+            if(!string.IsNullOrEmpty(txtCurrentIndex.Text) && Convert.ToInt32(txtCurrentIndex.Text) > -1 && Convert.ToInt32(txtCurrentIndex.Text) < aVac_rpm.Length)
+            {
+                currenttimestampIndx = Convert.ToInt32(txtCurrentIndex.Text);
+            }
         }
     }
 
