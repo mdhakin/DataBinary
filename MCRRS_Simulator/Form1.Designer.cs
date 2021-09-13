@@ -40,6 +40,11 @@ namespace MCRRS_Simulator
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtCurrentIndex = new System.Windows.Forms.TextBox();
+            this.lblChangeIndex = new System.Windows.Forms.Label();
+            this.btnChangeIndex = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.CleaningPlatformOn = new System.Windows.Forms.PictureBox();
             this.pDeck_Lock = new System.Windows.Forms.PictureBox();
             this.pDeck_Float = new System.Windows.Forms.PictureBox();
             this.lblVac_console_on = new System.Windows.Forms.PictureBox();
@@ -48,9 +53,8 @@ namespace MCRRS_Simulator
             this.rev_on = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.console = new System.Windows.Forms.PictureBox();
-            this.txtCurrentIndex = new System.Windows.Forms.TextBox();
-            this.lblChangeIndex = new System.Windows.Forms.Label();
-            this.btnChangeIndex = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            ((System.ComponentModel.ISupportInitialize)(this.CleaningPlatformOn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pDeck_Lock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pDeck_Float)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblVac_console_on)).BeginInit();
@@ -70,46 +74,49 @@ namespace MCRRS_Simulator
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(642, 10);
+            this.label1.Location = new System.Drawing.Point(482, 8);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 17);
+            this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "TimeStamp";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(642, 31);
+            this.label2.Location = new System.Drawing.Point(482, 25);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 17);
+            this.label2.Size = new System.Drawing.Size(92, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "HP water Pressue";
             // 
             // lblOpenLoop
             // 
             this.lblOpenLoop.AutoSize = true;
-            this.lblOpenLoop.Location = new System.Drawing.Point(642, 48);
-            this.lblOpenLoop.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblOpenLoop.Location = new System.Drawing.Point(482, 39);
             this.lblOpenLoop.Name = "lblOpenLoop";
-            this.lblOpenLoop.Size = new System.Drawing.Size(144, 17);
+            this.lblOpenLoop.Size = new System.Drawing.Size(107, 13);
             this.lblOpenLoop.TabIndex = 7;
             this.lblOpenLoop.Text = "Open Loop Pressure:";
             // 
             // lblEngingRpm
             // 
             this.lblEngingRpm.AutoSize = true;
-            this.lblEngingRpm.Location = new System.Drawing.Point(642, 65);
+            this.lblEngingRpm.Location = new System.Drawing.Point(482, 53);
+            this.lblEngingRpm.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEngingRpm.Name = "lblEngingRpm";
-            this.lblEngingRpm.Size = new System.Drawing.Size(89, 17);
+            this.lblEngingRpm.Size = new System.Drawing.Size(68, 13);
             this.lblEngingRpm.TabIndex = 8;
             this.lblEngingRpm.Text = "Engine Rpm:";
             // 
             // lblVacRPM
             // 
             this.lblVacRPM.AutoSize = true;
-            this.lblVacRPM.Location = new System.Drawing.Point(642, 86);
+            this.lblVacRPM.Location = new System.Drawing.Point(482, 70);
+            this.lblVacRPM.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblVacRPM.Name = "lblVacRPM";
-            this.lblVacRPM.Size = new System.Drawing.Size(46, 17);
+            this.lblVacRPM.Size = new System.Drawing.Size(35, 13);
             this.lblVacRPM.TabIndex = 10;
             this.lblVacRPM.Text = "label3";
             // 
@@ -127,33 +134,89 @@ namespace MCRRS_Simulator
             "800",
             "900",
             "1000"});
-            this.comboBox1.Location = new System.Drawing.Point(664, 311);
+            this.comboBox1.Location = new System.Drawing.Point(498, 253);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(86, 24);
+            this.comboBox1.Size = new System.Drawing.Size(66, 21);
             this.comboBox1.TabIndex = 11;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(661, 291);
+            this.label3.Location = new System.Drawing.Point(496, 236);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 17);
+            this.label3.Size = new System.Drawing.Size(68, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Time Interval";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(756, 318);
+            this.label4.Location = new System.Drawing.Point(567, 258);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 17);
+            this.label4.Size = new System.Drawing.Size(20, 13);
             this.label4.TabIndex = 13;
             this.label4.Text = "ms";
+            // 
+            // txtCurrentIndex
+            // 
+            this.txtCurrentIndex.Location = new System.Drawing.Point(498, 306);
+            this.txtCurrentIndex.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCurrentIndex.Name = "txtCurrentIndex";
+            this.txtCurrentIndex.Size = new System.Drawing.Size(66, 20);
+            this.txtCurrentIndex.TabIndex = 16;
+            this.txtCurrentIndex.Text = "0";
+            // 
+            // lblChangeIndex
+            // 
+            this.lblChangeIndex.AutoSize = true;
+            this.lblChangeIndex.Location = new System.Drawing.Point(498, 287);
+            this.lblChangeIndex.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblChangeIndex.Name = "lblChangeIndex";
+            this.lblChangeIndex.Size = new System.Drawing.Size(33, 13);
+            this.lblChangeIndex.TabIndex = 17;
+            this.lblChangeIndex.Text = "Index";
+            // 
+            // btnChangeIndex
+            // 
+            this.btnChangeIndex.Location = new System.Drawing.Point(567, 305);
+            this.btnChangeIndex.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnChangeIndex.Name = "btnChangeIndex";
+            this.btnChangeIndex.Size = new System.Drawing.Size(50, 19);
+            this.btnChangeIndex.TabIndex = 18;
+            this.btnChangeIndex.Text = "Update";
+            this.btnChangeIndex.UseVisualStyleBackColor = true;
+            this.btnChangeIndex.Click += new System.EventHandler(this.btnChangeIndex_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(814, 70);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // CleaningPlatformOn
+            // 
+            this.CleaningPlatformOn.BackColor = System.Drawing.Color.Transparent;
+            this.CleaningPlatformOn.Image = global::MCRRS_Simulator.Properties.Resources.GREEN_DECK;
+            this.CleaningPlatformOn.Location = new System.Drawing.Point(138, 77);
+            this.CleaningPlatformOn.Name = "CleaningPlatformOn";
+            this.CleaningPlatformOn.Size = new System.Drawing.Size(54, 129);
+            this.CleaningPlatformOn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.CleaningPlatformOn.TabIndex = 19;
+            this.CleaningPlatformOn.TabStop = false;
+            this.CleaningPlatformOn.Visible = false;
             // 
             // pDeck_Lock
             // 
             this.pDeck_Lock.Image = global::MCRRS_Simulator.Properties.Resources.DECK_LOCK_INDICATOR;
-            this.pDeck_Lock.Location = new System.Drawing.Point(375, 310);
+            this.pDeck_Lock.Location = new System.Drawing.Point(281, 252);
+            this.pDeck_Lock.Margin = new System.Windows.Forms.Padding(2);
             this.pDeck_Lock.Name = "pDeck_Lock";
             this.pDeck_Lock.Size = new System.Drawing.Size(65, 14);
             this.pDeck_Lock.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -163,7 +226,8 @@ namespace MCRRS_Simulator
             // pDeck_Float
             // 
             this.pDeck_Float.Image = global::MCRRS_Simulator.Properties.Resources.DECK_FLOAT_INDICATOR;
-            this.pDeck_Float.Location = new System.Drawing.Point(369, 334);
+            this.pDeck_Float.Location = new System.Drawing.Point(277, 271);
+            this.pDeck_Float.Margin = new System.Windows.Forms.Padding(2);
             this.pDeck_Float.Name = "pDeck_Float";
             this.pDeck_Float.Size = new System.Drawing.Size(65, 14);
             this.pDeck_Float.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -173,7 +237,8 @@ namespace MCRRS_Simulator
             // lblVac_console_on
             // 
             this.lblVac_console_on.Image = global::MCRRS_Simulator.Properties.Resources.VACUUM_INDICATOR;
-            this.lblVac_console_on.Location = new System.Drawing.Point(201, 315);
+            this.lblVac_console_on.Location = new System.Drawing.Point(151, 256);
+            this.lblVac_console_on.Margin = new System.Windows.Forms.Padding(2);
             this.lblVac_console_on.Name = "lblVac_console_on";
             this.lblVac_console_on.Size = new System.Drawing.Size(49, 14);
             this.lblVac_console_on.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -183,8 +248,8 @@ namespace MCRRS_Simulator
             // fwd_on
             // 
             this.fwd_on.Image = global::MCRRS_Simulator.Properties.Resources.FWD_INDICATOR;
-            this.fwd_on.Location = new System.Drawing.Point(201, 334);
-            this.fwd_on.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.fwd_on.Location = new System.Drawing.Point(151, 271);
+            this.fwd_on.Margin = new System.Windows.Forms.Padding(2);
             this.fwd_on.Name = "fwd_on";
             this.fwd_on.Size = new System.Drawing.Size(49, 14);
             this.fwd_on.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -194,8 +259,7 @@ namespace MCRRS_Simulator
             // neutral_on
             // 
             this.neutral_on.Image = global::MCRRS_Simulator.Properties.Resources.NEUTRAL_INDICATOR;
-            this.neutral_on.Location = new System.Drawing.Point(254, 334);
-            this.neutral_on.Margin = new System.Windows.Forms.Padding(4);
+            this.neutral_on.Location = new System.Drawing.Point(190, 271);
             this.neutral_on.Name = "neutral_on";
             this.neutral_on.Size = new System.Drawing.Size(49, 14);
             this.neutral_on.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -205,8 +269,7 @@ namespace MCRRS_Simulator
             // rev_on
             // 
             this.rev_on.Image = global::MCRRS_Simulator.Properties.Resources.REV_INDICATOR;
-            this.rev_on.Location = new System.Drawing.Point(311, 334);
-            this.rev_on.Margin = new System.Windows.Forms.Padding(4);
+            this.rev_on.Location = new System.Drawing.Point(233, 271);
             this.rev_on.Name = "rev_on";
             this.rev_on.Size = new System.Drawing.Size(49, 14);
             this.rev_on.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -216,8 +279,8 @@ namespace MCRRS_Simulator
             // pictureBox1
             // 
             this.pictureBox1.Image = global::MCRRS_Simulator.Properties.Resources.MCRRS_MAIN;
-            this.pictureBox1.Location = new System.Drawing.Point(184, 95);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(138, 77);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(320, 129);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -227,45 +290,29 @@ namespace MCRRS_Simulator
             // console
             // 
             this.console.Image = global::MCRRS_Simulator.Properties.Resources.BCKGRD_INDICATORS;
-            this.console.Location = new System.Drawing.Point(143, 310);
-            this.console.Margin = new System.Windows.Forms.Padding(4);
+            this.console.Location = new System.Drawing.Point(107, 252);
             this.console.Name = "console";
             this.console.Size = new System.Drawing.Size(297, 45);
             this.console.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.console.TabIndex = 6;
             this.console.TabStop = false;
             // 
-            // txtCurrentIndex
+            // listBox1
             // 
-            this.txtCurrentIndex.Location = new System.Drawing.Point(664, 376);
-            this.txtCurrentIndex.Name = "txtCurrentIndex";
-            this.txtCurrentIndex.Size = new System.Drawing.Size(86, 22);
-            this.txtCurrentIndex.TabIndex = 16;
-            // 
-            // lblChangeIndex
-            // 
-            this.lblChangeIndex.AutoSize = true;
-            this.lblChangeIndex.Location = new System.Drawing.Point(664, 353);
-            this.lblChangeIndex.Name = "lblChangeIndex";
-            this.lblChangeIndex.Size = new System.Drawing.Size(41, 17);
-            this.lblChangeIndex.TabIndex = 17;
-            this.lblChangeIndex.Text = "Index";
-            // 
-            // btnChangeIndex
-            // 
-            this.btnChangeIndex.Location = new System.Drawing.Point(756, 375);
-            this.btnChangeIndex.Name = "btnChangeIndex";
-            this.btnChangeIndex.Size = new System.Drawing.Size(67, 23);
-            this.btnChangeIndex.TabIndex = 18;
-            this.btnChangeIndex.Text = "Update";
-            this.btnChangeIndex.UseVisualStyleBackColor = true;
-            this.btnChangeIndex.Click += new System.EventHandler(this.btnChangeIndex_Click);
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(688, 184);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(239, 290);
+            this.listBox1.TabIndex = 21;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 474);
+            this.ClientSize = new System.Drawing.Size(939, 487);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.CleaningPlatformOn);
             this.Controls.Add(this.btnChangeIndex);
             this.Controls.Add(this.lblChangeIndex);
             this.Controls.Add(this.txtCurrentIndex);
@@ -286,10 +333,11 @@ namespace MCRRS_Simulator
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.console);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.CleaningPlatformOn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pDeck_Lock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pDeck_Float)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblVac_console_on)).EndInit();
@@ -325,6 +373,9 @@ namespace MCRRS_Simulator
         private System.Windows.Forms.TextBox txtCurrentIndex;
         private System.Windows.Forms.Label lblChangeIndex;
         private System.Windows.Forms.Button btnChangeIndex;
+        private System.Windows.Forms.PictureBox CleaningPlatformOn;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

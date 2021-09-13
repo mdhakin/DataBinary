@@ -124,6 +124,9 @@
   <data name="FWD_INDICATOR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\dp600images\FWD_INDICATOR.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="GREEN_DECK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\dp600images\GREEN_DECK.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="MCRRS_MAIN" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\dp600images\MCRRS_MAIN.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -133,16 +136,22 @@
   <data name="REV_INDICATOR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\dp600images\REV_INDICATOR.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="HIGH_GEAR" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\dp600images\HIGH_GEAR.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="NEUTRAL_INDICATOR" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\dp600images\NEUTRAL_INDICATOR.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="VACUUM_INDICATOR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\dp600images\VACUUM_INDICATOR.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DECK_LOCK_INDICATOR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\dp600images\DECK_LOCK_INDICATOR.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NEUTRAL_INDICATOR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\dp600images\NEUTRAL_INDICATOR.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VACUUM_ON" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\dp600images\VACUUM_ON.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HIGH_GEAR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\dp600images\HIGH_GEAR.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="output-onlinepngtools" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\dp600images\output-onlinepngtools.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

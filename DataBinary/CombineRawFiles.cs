@@ -366,7 +366,7 @@ namespace DataBinary
             for (int i = 0; i < gapstarts.Length; i++)
             {
                 // fill all primary up until the first gap starts
-                while (primary.Msgtime[lastPrimaryIndex] < gapstarts[i])
+                while (primary.Msgtime[lastPrimaryIndex] <= gapstarts[i])
                 {
                     t[lastnewIndex].ts = primary.Msgtime[lastPrimaryIndex];
                     t[lastnewIndex].msgID = primary.Msgid[lastPrimaryIndex];

@@ -82,7 +82,7 @@ namespace test
             {
                 CombineRawFiles combine = new CombineRawFiles();
 
-                DataTable messages = combine.Combine_returnDataTable(DataOne, DataTwo, 3000);
+                DataTable messages = combine.Combine_returnDataTable(DataOne, DataTwo, 1000);
                 DG1.DataSource = messages;
 
                 DataTable inOne = convertRawToDT(DataOne);

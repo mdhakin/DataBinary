@@ -21,6 +21,9 @@ namespace MCRRS_Simulator
         int currenttimestampIndx;
         string[] allreadings;
 
+        string[] aDeck_on;
+        
+
         string[] aDeck_float;
         string[] aDeck_Lock;
 
@@ -48,7 +51,11 @@ namespace MCRRS_Simulator
         private void Form1_Load(object sender, EventArgs e)
         {
             string[] args = Environment.GetCommandLineArgs();
-            
+            string[] readings = File.ReadAllLines("readings.txt");
+            for (int i = 0; i < readings.Length; i++)
+            {
+                listBox1.Items.Add(i.ToString() + " " +readings[i]);
+            }
             if(args.Length > 1)
             {
                 string nargs = args[0];
@@ -71,6 +78,18 @@ namespace MCRRS_Simulator
             
         }
 
+        private void imagePlay(string sPath, PictureBox pb)
+        {
+            Bitmap bm = new Bitmap(Image.FromFile(sPath));
+            int w = bm.Width;
+            int h = bm.Height;
+            Color backColor = bm.GetPixel(0, 0);
+            bm.MakeTransparent(backColor);
+            pb.Image = bm;
+
+
+
+        }   
         private void setup()
         {
             fwd_on1 = getReading(43);
@@ -83,6 +102,7 @@ namespace MCRRS_Simulator
             aDeck_float = getReading(81);
             aDeck_Lock = getReading(82);
             currenttimestampIndx = 0;
+            aDeck_on = getReading(38);
         }
 
         private string[] getReading(int indx)
@@ -177,8 +197,19 @@ namespace MCRRS_Simulator
                 rev_on.Visible = false;
             }
 
-            string[] Deck_lock_parts = aDeck_Lock[currenttimestampIndx].Split('|');
+            string[] Deck_lock_parts = aDeck_on[currenttimestampIndx].Split('|');
             if (Deck_lock_parts[1] == "1")
+            {
+                CleaningPlatformOn.Visible = true;
+            }
+            else
+            {
+
+                CleaningPlatformOn.Visible = false;
+            }
+
+            string[] cleaning_platform_on_parts = aDeck_Lock[currenttimestampIndx].Split('|');
+            if (cleaning_platform_on_parts[1] == "1")
             {
                 pDeck_Lock.Visible = true;
             }
@@ -187,7 +218,6 @@ namespace MCRRS_Simulator
 
                 pDeck_Lock.Visible = false;
             }
-
 
             string[] hp_water_parts = open_loop_psi[currenttimestampIndx].Split('|');
             lblOpenLoop.Text = "Open Loop Pressure: " + hp_water_parts[1];
@@ -214,6 +244,16 @@ namespace MCRRS_Simulator
             {
                 currenttimestampIndx = Convert.ToInt32(txtCurrentIndex.Text);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //imagePlay("dp600images\\GREEN_DECK.bmp", CleaningPlatformOn);
+            // 138 77
+            //CleaningPlatformOn.Left = 138;
+            //CleaningPlatformOn.Top = 77;
+            
+
         }
     }
 

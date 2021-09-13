@@ -90,16 +90,30 @@ namespace test
 
             long tempcount = raw.RecordCount;
 
-            if (tempcount > 1299)
+            if (tempcount > 2299)
             {
                 tempcount = 100;
             }
 
-            for (int i = 0; i < tempcount; i++)
+            if (checkBox1.Checked == false)
             {
-                radings[i] = (i + 1).ToString() + "\t" + UT.UnixTimeStampToDateTime( Convert.ToDouble(raw.Msgtime[i])) + "\t" + raw.Msgid[i] + "\t" + raw.F0[i] + "\t" + raw.F1[i] + "\t" + raw.F2[i] + "\t" + raw.F3[i] + "\t" + raw.F4[i] + "\t" + raw.F5[i] + "\t" + raw.F6[i] + "\t" + raw.F7[i];
-            
+                for (int i = 0; i < tempcount; i++)
+                {
+                    radings[i] = (i + 1).ToString() + "\t" + UT.UnixTimeStampToDateTime(Convert.ToDouble(raw.Msgtime[i])) + "\t" + raw.Msgid[i] + "\t" + raw.F0[i] + "\t" + raw.F1[i] + "\t" + raw.F2[i] + "\t" + raw.F3[i] + "\t" + raw.F4[i] + "\t" + raw.F5[i] + "\t" + raw.F6[i] + "\t" + raw.F7[i];
+
+                }
             }
+            else
+            {
+                for (int i = 0; i < tempcount; i++)
+                {
+                    radings[i] = (i + 1).ToString() + "\t" + raw.Msgtime[i] + "\t" + raw.Msgid[i] + "\t" + raw.F0[i] + "\t" + raw.F1[i] + "\t" + raw.F2[i] + "\t" + raw.F3[i] + "\t" + raw.F4[i] + "\t" + raw.F5[i] + "\t" + raw.F6[i] + "\t" + raw.F7[i];
+
+                }
+            }
+            
+
+            
             listBox2.DataSource = radings;
         }
 

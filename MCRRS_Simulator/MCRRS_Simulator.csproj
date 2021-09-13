@@ -124,5 +124,14 @@
   <ItemGroup>
     <None Include="bin\Debug\dp600images\DECK_LOCK_INDICATOR.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\dp600images\GREEN_DECK.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\dp600images\VACUUM_ON.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\dp600images\output-onlinepngtools.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -103,6 +103,16 @@ namespace MCRRS_Simulator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GREEN_DECK {
+            get {
+                object obj = ResourceManager.GetObject("GREEN_DECK", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap HIGH_GEAR {
             get {
                 object obj = ResourceManager.GetObject("HIGH_GEAR", resourceCulture);
@@ -133,6 +143,16 @@ namespace MCRRS_Simulator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap output_onlinepngtools {
+            get {
+                object obj = ResourceManager.GetObject("output-onlinepngtools", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap REV_INDICATOR {
             get {
                 object obj = ResourceManager.GetObject("REV_INDICATOR", resourceCulture);
@@ -146,6 +166,16 @@ namespace MCRRS_Simulator.Properties {
         internal static System.Drawing.Bitmap VACUUM_INDICATOR {
             get {
                 object obj = ResourceManager.GetObject("VACUUM_INDICATOR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VACUUM_ON {
+            get {
+                object obj = ResourceManager.GetObject("VACUUM_ON", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

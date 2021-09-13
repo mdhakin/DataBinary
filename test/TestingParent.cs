@@ -109,6 +109,14 @@ namespace test
             LoadRawDataTestForm();
         }
 
+        private void loadGapVisualize()
+        {
+            //GapVisualize
+            GapVisualize childForm = new GapVisualize();
+            childForm.MdiParent = this;
+            //childForm.Text = "Window " + childFormNumber++;
+            childForm.Show();
+        }
 
         private void LoadRawDataTestForm()
         {
@@ -155,11 +163,7 @@ namespace test
 
         private void makeDataFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //// MakeDataFile
-            //MakeDataFile childForm = new MakeDataFile();
-            //childForm.MdiParent = this;
-            ////childForm.Text = "Window " + childFormNumber++;
-            //childForm.Show();
+            loadGapVisualize();
         }
 
         private void printToolStripButton_Click(object sender, EventArgs e)
