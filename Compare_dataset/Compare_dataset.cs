@@ -242,7 +242,8 @@ namespace Compare_dataset
                             tempdata[6] = msgoneHundred.F6[j];
                             tempdata[7] = msgoneHundred.F7[j];
 
-
+                            // tempdata[Hi_Bit] << 8 | tempdata[Lo_Bit] & 0xFF
+                            var temp2 = tempdata[Hi_Bit] << 8 | tempdata[Lo_Bit] & 0xFF;
                             this.m_outputString[j] = this.m_outputString[j] + (tempdata[Hi_Bit] << 8 | tempdata[Lo_Bit] & 0xFF).ToString() + '|';
                         }
                         else if (Message_ID == "200")
